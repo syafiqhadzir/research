@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{"/favicon.ico" | relative_url }}"
+    type="image/x-icon" />
+    <title>
+      {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{
+      site.title }}{% endif %}
+    </title>
+    <link rel="stylesheet" href="{{"/assets/css/styles.css" | relative_url}}">
+    <link rel="manifest" href="{{"/manifest.json" | relative_url}}">
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope
+              );
+            })
+            .catch((err) => {
+              console.log("ServiceWorker registration failed: ", err);
+            });
+        });
+      }
+    </script>
+    {% include analytics.html %} {% feed_meta %} {% seo %}
+  </head>
+  <body onload="onLoad()">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    {% include themeSelector.html %}
+    <main id="main-content" class="site-main">{{ content }}</main>
+    {% include footer.html %}
+    <script src="{{"/assets/js/theme.js" | relative_url}}"></script>
+    <script src="{{"/assets/js/script.js" | relative_url}}"></script>
+  </body>
+</html>

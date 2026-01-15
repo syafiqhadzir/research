@@ -1,0 +1,40 @@
+---
+title: Syafiq Hadzir
+layout: default
+---
+
+<div class="mid-section-home">
+  <div class="home-intro">
+    <h1>{{ site.author_name }}</h1>
+    <p class="home-tagline">{{ page.home_text }}</p>
+  </div>
+
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="{{ '/publications/' | relative_url }}">Publications</a></li>
+      <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+      <li><a href="{{ '/categories/' | relative_url }}">Research Areas</a></li>
+      <li><a href="https://syafiqhadzir.dev/">Portfolio</a></li>
+    </ul>
+  </nav>
+
+  <section class="recent-publications">
+    <h2>Recent Publications</h2>
+    <ul class="publication-list minimal">
+      {% for post in site.posts limit:3 %}
+      <li class="publication-item">
+        <span class="pub-year">{{ post.date | date: "%Y" }}</span>
+        <div class="pub-content">
+          <h3 class="pub-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+          <div class="pub-venue"><em>{{ post.venue }}</em></div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ '/publications/' | relative_url }}" class="view-all-link"
+      >View all publications →</a
+    >
+  </section>
+</div>

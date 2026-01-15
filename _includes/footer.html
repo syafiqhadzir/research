@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="footer-links">
+    {% if site.google_scholar %}
+    <a href="{{ site.google_scholar }}" target="_blank">Google Scholar</a>
+    {% endif %} {% if site.orcid %}
+    <a href="https://orcid.org/{{ site.orcid }}" target="_blank">ORCID</a>
+    {% endif %} {% if site.github_username %}
+    <a href="https://github.com/{{ site.github_username }}" target="_blank"
+      >GitHub</a
+    >
+    {% endif %} {% if site.twitter_username %}
+    <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank"
+      >Twitter</a
+    >
+    {% endif %}
+  </div>
+  <div class="footer-copyright">
+    &copy; {{ site.time | date: "%Y" }} {{ site.author_name }}. Built with
+    minimalist precision.
+  </div>
+</footer>

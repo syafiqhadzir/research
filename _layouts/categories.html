@@ -1,0 +1,38 @@
+---
+layout: description
+permalink: /categories/
+title: Research Areas
+---
+
+<div id="archives">
+  {% for category in site.categories %}
+  <section class="category-section" style="margin-bottom: 4rem">
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+    <h2
+      id="{{ category_name | slugize }}"
+      class="category-title"
+      style="
+        font-size: 1.25rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      "
+    >
+      {{ category_name }}
+    </h2>
+    <ul class="publication-list minimal">
+      {% for post in site.categories[category_name] %}
+      <li class="publication-item">
+        <span class="pub-year">{{ post.date | date: "%Y" }}</span>
+        <div class="pub-content">
+          <h3 class="pub-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+          <div class="pub-venue"><em>{{ post.venue }}</em></div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>

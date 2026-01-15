@@ -1,0 +1,52 @@
+author_name: "Syafiq Hadzir"
+url: research.syafiqhadzir.dev
+description: "Professional portfolio of an AI-assisted Software QA Engineer specializing in test automation and AI-driven methodologies."
+
+# Scholarly Profiles
+google_scholar: ""
+orcid: ""
+github_username: "syafiqhadzir"
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jemoji
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate-v2
+  - jekyll-minifier
+  - autoprefixer-rails
+
+############################################################
+# Pagination
+pagination:
+  enabled: true
+  collection: "posts"
+  per_page: 8
+  permalink: "/publications/:num/"
+  title: ":title - page :num"
+  sort_field: "date"
+  sort_reverse: true
+  category: "posts"
+  trail:
+    before: 2
+    after: 2
+
+############################################################
+# Site Configuration data for Jekyll Minifier
+jekyll-minifier:
+  preserve_php: false
+  remove_spaces_inside_tags: true
+  remove_multi_spaces: true
+  remove_comments: true
+  remove_intertag_spaces: false
+  remove_quotes: false
+  compress_css: true
+  compress_javascript: true
+  compress_json: true
+  simple_doctype: true
+  preserve_line_breaks: false
+
+############################################################
+# Analytics
+google_analytics: "G-LTSG19SNPH"
