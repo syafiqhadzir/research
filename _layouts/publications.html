@@ -185,15 +185,14 @@ title: Publications
         const matchesCategory =
           currentFilter === "all" || category === currentFilter;
 
-        const title = item
-          .querySelector(".publication__title")
-          .textContent.toLowerCase();
-        const authors = item
-          .querySelector(".publication__authors")
-          .textContent.toLowerCase();
-        const venue = item
-          .querySelector(".publication__venue")
-          .textContent.toLowerCase();
+        const titleEl = item.querySelector(".publication__title");
+        const authorsEl = item.querySelector(".publication__authors");
+        const venueEl = item.querySelector(".publication__venue");
+
+        const title = titleEl ? titleEl.textContent.toLowerCase() : "";
+        const authors = authorsEl ? authorsEl.textContent.toLowerCase() : "";
+        const venue = venueEl ? venueEl.textContent.toLowerCase() : "";
+
         const matchesSearch =
           title.includes(searchTerm) ||
           authors.includes(searchTerm) ||
