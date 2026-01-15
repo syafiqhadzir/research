@@ -42,7 +42,7 @@ title: Publications
   {% for post in site.posts %}
   <li
     class="publication-item"
-    data-categories="{% for cat in post.categories %}{{ cat | slugify }} {% endfor %}"
+    data-category="{{ post.categories | first | slugify }}"
   >
     <span class="publication__meta">{{ post.date | date: "%Y" }}</span>
     <div class="publication__content">
