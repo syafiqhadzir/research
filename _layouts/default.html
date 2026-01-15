@@ -13,7 +13,14 @@
       {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{
       site.title }}{% endif %}
     </title>
-    <link rel="stylesheet" href="{{"/assets/css/styles.css" | relative_url}}">
+    
+    <!-- Critical CSS - Inline for instant rendering -->
+    {% include critical-css.html %}
+    
+    <!-- Async load full CSS with preload -->
+    <link rel="preload" href="{{"/assets/css/styles.css" | relative_url}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{"/assets/css/styles.css" | relative_url}}"></noscript>
+    
     <link rel="manifest" href="{{"/manifest.json" | relative_url}}">
     <script>
       // Register Service Worker for offline support and caching

@@ -5,5 +5,16 @@
 <!-- Preconnect for critical third-party origins -->
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
 
-<!-- Preload critical assets -->
-<link rel="preload" href="/assets/css/styles.css" as="style" />
+<!-- Preload critical assets with priority hints -->
+<link
+  rel="preload"
+  href="/assets/css/styles.css"
+  as="style"
+  fetchpriority="high"
+/>
+<link
+  rel="preload"
+  href="/assets/js/theme.js"
+  as="script"
+  fetchpriority="low"
+/>

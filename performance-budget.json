@@ -4,11 +4,11 @@
       "resourceSizes": [
         {
           "resourceType": "document",
-          "budget": 50
+          "budget": 60
         },
         {
           "resourceType": "stylesheet",
-          "budget": 30
+          "budget": 25
         },
         {
           "resourceType": "script",
@@ -40,23 +40,23 @@
       "timings": [
         {
           "metric": "first-contentful-paint",
-          "budget": 1800
+          "budget": 1500
         },
         {
           "metric": "largest-contentful-paint",
-          "budget": 2500
+          "budget": 2000
         },
         {
           "metric": "cumulative-layout-shift",
-          "budget": 0.1
+          "budget": 0.05
         },
         {
           "metric": "total-blocking-time",
-          "budget": 300
+          "budget": 200
         },
         {
           "metric": "speed-index",
-          "budget": 3000
+          "budget": 2500
         }
       ]
     }
