@@ -3,59 +3,37 @@ title: Syafiq Hadzir
 layout: default
 ---
 
-<div class="home">
-  <div class="home__intro">
-    <h1 class="home__title">{{ site.author_name }}</h1>
-    <p class="home__tagline">{{ page.home_text }}</p>
+<div class="mid-section-home">
+  <div class="home-intro">
+    <h1>{{ site.author_name }}</h1>
+    <p class="home-tagline">{{ page.home_text }}</p>
   </div>
 
-  <nav class="home__nav" aria-label="Main navigation">
-    <ul class="home__nav-list">
-      <li class="home__nav-item">
-        <a href="{{ '/publications/' | relative_url }}" class="home__nav-link"
-          >Publications</a
-        >
-      </li>
-      <li class="home__nav-item">
-        <a href="{{ '/about/' | relative_url }}" class="home__nav-link"
-          >About</a
-        >
-      </li>
-      <li class="home__nav-item">
-        <a href="{{ '/categories/' | relative_url }}" class="home__nav-link"
-          >Research Areas</a
-        >
-      </li>
-      <li class="home__nav-item">
-        <a
-          href="https://syafiqhadzir.dev/"
-          class="home__nav-link"
-          target="_blank"
-          rel="noopener"
-          >Portfolio</a
-        >
-      </li>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="{{ '/publications/' | relative_url }}">Publications</a></li>
+      <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+      <li><a href="{{ '/categories/' | relative_url }}">Research Areas</a></li>
+      <li><a href="https://syafiqhadzir.dev/">Portfolio</a></li>
     </ul>
   </nav>
 
-  <section class="home__recent">
-    <h2 class="home__recent-title">Recent Publications</h2>
-    <ul class="publication-list publication-list--minimal">
+  <section class="recent-publications">
+    <h2>Recent Publications</h2>
+    <ul class="publication-list minimal">
       {% for post in site.posts limit:3 %}
       <li class="publication-item">
-        <span class="publication__meta">{{ post.date | date: "%Y" }}</span>
-        <div class="publication__content">
-          <h3 class="publication__title">
-            <a href="{{ post.url | relative_url }}" class="publication__link"
-              >{{ post.title }}</a
-            >
+        <span class="pub-year">{{ post.date | date: "%Y" }}</span>
+        <div class="pub-content">
+          <h3 class="pub-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
           </h3>
-          <div class="publication__venue"><em>{{ post.venue }}</em></div>
+          <div class="pub-venue"><em>{{ post.venue }}</em></div>
         </div>
       </li>
       {% endfor %}
     </ul>
-    <a href="{{ '/publications/' | relative_url }}" class="home__view-all"
+    <a href="{{ '/publications/' | relative_url }}" class="view-all-link"
       >View all publications →</a
     >
   </section>
