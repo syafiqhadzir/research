@@ -1,5 +1,5 @@
-// Publication Component - BEM Naming Convention
-// Modern publication list and detail views with reduced nesting
+// Publication Component - Minimalist Clean Design
+// Modern publication list and detail views with clear hierarchy
 
 @use "../abstracts" as *;
 
@@ -13,19 +13,27 @@
 
 .publication-item {
   display: flex;
-  gap: $space-2xl;
-  margin-bottom: $space-3xl;
+  gap: $space-8;
+  margin-bottom: $space-12;
+  padding-bottom: $space-8;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
   @include breakpoint-max("sm") {
     flex-direction: column;
-    gap: $space-sm;
+    gap: $space-3;
   }
 }
 
 .publication__meta {
-  color: var(--color-text-muted);
-  font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
+  color: var(--color-text-secondary);
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
   min-width: 60px;
 }
 
@@ -34,27 +42,36 @@
 }
 
 .publication__title {
-  font-size: $font-size-xl;
+  font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  margin: 0 0 $space-sm;
+  line-height: $line-height-snug;
+  margin: 0 0 $space-2;
 }
 
 .publication__link {
+  color: var(--color-text-primary);
   text-decoration: none;
 
-  @include focus-visible;
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
 }
 
 .publication__authors {
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   font-size: $font-size-sm;
-  margin-bottom: $space-2xs;
+  margin-bottom: $space-1;
 
   strong,
   b {
-    font-weight: $font-weight-bold;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: var(--color-text-primary);
+    font-weight: $font-weight-semibold;
   }
 }
 
@@ -83,19 +100,22 @@
 .publication__link-btn {
   background: none;
   border: none;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   cursor: pointer;
   font: inherit;
   padding: 0;
   text-decoration: none;
-  transition: color var(--transition-base);
 
   &:hover {
-    color: var(--color-text-primary);
+    color: var(--color-accent);
     text-decoration: underline;
   }
 
-  @include focus-visible;
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
 }
 
 // ============================================================================
@@ -122,12 +142,8 @@
 // Publication Detail
 // ============================================================================
 
-.publication-detail {
-  // Container styles if needed
-}
-
 .publication-detail__header {
-  margin-bottom: $space-4xl;
+  margin-bottom: $space-12;
 }
 
 .publication-detail__authors {

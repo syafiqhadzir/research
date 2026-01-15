@@ -1,5 +1,5 @@
-// Navigation Component - BEM Naming Convention
-// Modern, accessible navigation with reduced nesting
+// Navigation Component - Minimalist Clean Design
+// Modern, accessible navigation with clear hierarchy
 
 @use "../abstracts" as *;
 
@@ -12,28 +12,28 @@
 
   display: flex;
   font-size: $font-size-sm;
-  gap: $space-lg;
-}
-
-.nav__item {
-  // List item styles if needed
+  gap: $space-6;
 }
 
 .nav__link {
   color: var(--color-text-secondary);
   font-weight: $font-weight-medium;
   text-decoration: none;
-  transition: color var(--transition-fast);
 
   &:hover {
-    color: var(--color-text-primary);
+    color: var(--color-accent);
   }
 
-  @include focus-visible;
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
 }
 
 .nav__link--active {
   color: var(--color-text-primary);
+  font-weight: $font-weight-semibold;
 }
 
 // ============================================================================
@@ -44,6 +44,8 @@
   @include flex-between;
 
   margin-bottom: $space-5xl;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid var(--color-border);
 
   @include breakpoint("md") {
     margin-bottom: $space-4xl;
@@ -51,9 +53,9 @@
 }
 
 .site-header__title {
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  letter-spacing: -0.01em;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -61,7 +63,15 @@
   color: var(--color-text-primary);
   text-decoration: none;
 
-  @include focus-visible;
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
 }
 
 // ============================================================================
@@ -69,24 +79,23 @@
 // ============================================================================
 
 .skip-link {
-  background: var(--color-text-primary);
+  background: var(--color-accent);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  box-shadow: var(--shadow-xl);
-  color: var(--color-bg-primary);
+  box-shadow: var(--shadow-lg);
+  color: white;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   left: 50%;
-  letter-spacing: 0.02em;
-  padding: $space-sm $space-lg;
+  letter-spacing: 0.01em;
+  padding: $space-3 $space-6;
   position: fixed;
   text-decoration: none;
   top: -100px;
   transform: translateX(-50%);
-  transition: top var(--transition-smooth);
   z-index: var(--z-modal);
 
   &:focus {
-    outline: 2px solid var(--color-border);
+    outline: 2px solid white;
     outline-offset: -4px;
     top: 0;
   }
