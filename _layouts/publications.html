@@ -21,11 +21,16 @@ title: Publications
       />
     </div>
 
-    <nav class="blog-categories" aria-label="Filter by category">
-      <button class="filter-btn active" data-filter="all">All Research</button>
+    <nav class="category-nav" aria-label="Filter by category">
+      <button class="category__link category__link--active" data-filter="all">
+        All Research
+      </button>
       {% for category in site.categories %} {% capture category_name %}{{
       category | first }}{% endcapture %}
-      <button class="filter-btn" data-filter="{{ category_name | slugify }}">
+      <button
+        class="category__link"
+        data-filter="{{ category_name | slugify }}"
+      >
         {{ category_name }}
       </button>
       {% endfor %}
@@ -62,17 +67,29 @@ title: Publications
         {{ post.excerpt | strip_html | truncatewords: 25 }}
       </p>
       {% endif %}
-      <div class="pub-links">
+      <div class="publication__links">
         {% if post.pdf %}
-        <a href="{{ post.pdf }}" class="pub-link-btn" target="_blank">[PDF]</a>
+        <a
+          href="{{ post.pdf }}"
+          class="publication__link-btn"
+          target="_blank"
+          rel="noopener"
+        >
+          PDF
+        </a>
         {% endif %} {% if post.code %}
-        <a href="{{ post.code }}" class="pub-link-btn" target="_blank"
-          >[Code]</a
+        <a
+          href="{{ post.code }}"
+          class="publication__link-btn"
+          target="_blank"
+          rel="noopener"
         >
+          Code
+        </a>
         {% endif %}
-        <a href="{{ post.url | relative_url }}" class="pub-link-btn"
-          >[Details]</a
-        >
+        <a href="{{ post.url | relative_url }}" class="publication__link-btn">
+          Details
+        </a>
       </div>
     </div>
   </li>
@@ -152,11 +169,11 @@ title: Publications
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".filter-btn");
+    // Filter and Search functionality
+    const buttons = document.querySelectorAll(".category__link");
     const items = document.querySelectorAll(".publication-item");
-    const searchInput = document.getElementById("pub-search");
-    const noResults = document.getElementById("no-results");
-
+    const searchInput = document.getElementById("search");
+    const noResults = document.querySelector(".no-publications");
     let currentFilter = "all";
 
     function filterItems() {
@@ -164,20 +181,18 @@ title: Publications
       let visibleCount = 0;
 
       items.forEach((item) => {
-        // Category Filter
-        const categories = item.getAttribute("data-categories").split(" ");
+        const category = item.getAttribute("data-category");
         const matchesCategory =
-          currentFilter === "all" || categories.includes(currentFilter);
+          currentFilter === "all" || category === currentFilter;
 
-        // Text Search
         const title = item
-          .querySelector(".pub-title")
+          .querySelector(".publication__title")
           .textContent.toLowerCase();
         const authors = item
-          .querySelector(".pub-authors")
+          .querySelector(".publication__authors")
           .textContent.toLowerCase();
         const venue = item
-          .querySelector(".pub-venue")
+          .querySelector(".publication__venue")
           .textContent.toLowerCase();
         const matchesSearch =
           title.includes(searchTerm) ||
@@ -203,8 +218,8 @@ title: Publications
     // Event Listeners
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
-        buttons.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
+        buttons.forEach((b) => b.classList.remove("category__link--active"));
+        btn.classList.add("category__link--active");
         currentFilter = btn.getAttribute("data-filter");
         filterItems();
       });
