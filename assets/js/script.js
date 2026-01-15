@@ -1,15 +1,6 @@
+// Initialize on page load
 function onLoad() {
-  const themeSelector = document.getElementById('themeSelector');
-  for (const themeName in themeMap) {
-    const opt = document.createElement('option');
-    opt.value = themeName;
-    opt.innerHTML = capitalizeFirstLetter(themeName);
-    themeSelector.appendChild(opt);
-  }
-  if (localStorage.getItem('theme') != null) {
-    themeSelector.value = localStorage.getItem('theme');
-    toggleTheme();
-  }
+  // Theme is now handled by theme.js
 }
 
 function toggleTheme() {
