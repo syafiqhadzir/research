@@ -1,0 +1,42 @@
+// Page Header Component - BEM Naming Convention
+// Reusable page header for all page types
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Page Header
+// ============================================================================
+
+.page-header {
+  margin-bottom: $space-16;
+
+  @include breakpoint("md") {
+    margin-bottom: $space-12;
+  }
+}
+
+.page-header__title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin: $space-6 0 $space-8;
+}
+
+// ============================================================================
+// Publication Header (Specific variant)
+// ============================================================================
+
+.publication-header {
+  margin-bottom: $space-16;
+
+  @include breakpoint("md") {
+    margin-bottom: $space-12;
+  }
+}
+
+.publication-header__title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin: $space-6 0 $space-8;
+}

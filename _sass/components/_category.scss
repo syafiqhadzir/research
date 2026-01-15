@@ -4,20 +4,6 @@
 @use "../abstracts" as *;
 
 // ============================================================================
-// Publications Header
-// ============================================================================
-
-.publication-header {
-  margin-bottom: $space-4xl;
-}
-
-.publication-header__title {
-  font-size: $font-size-2xl;
-  font-weight: $font-weight-bold;
-  margin: 0 0 $space-lg;
-}
-
-// ============================================================================
 // Category Navigation
 // ============================================================================
 
@@ -30,7 +16,6 @@
   padding-bottom: $space-md;
 }
 
-.category-link,
 .category__link {
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
@@ -57,7 +42,6 @@
   }
 }
 
-.category-link--active,
 .category__link--active {
   background: var(--color-accent);
   border-color: var(--color-accent);
