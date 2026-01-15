@@ -1,32 +1,24 @@
-const themeMap = {
-  'default-light': {
-    'background-color': 'white',
-    'text-color': '#222',
-    'highlight-color': '#eee',
-  },
-  'default-dark': {
-    'background-color': '#222',
-    'text-color': 'white',
-    'highlight-color': '#2e2e2e',
-  },
-  'solarized-light': {
-    'background-color': '#fdf6e3',
-    'text-color': '#465a61',  /* Darkened from #657b83 for AAA */
-    'highlight-color': '#eee8d5',
-  },
-  'solarized-dark': {
-    'background-color': '#002b36',
-    'text-color': '#dcebe6',   /* Lightened from #839496 for AAA */
-    'highlight-color': '#073642',
-  },
-  'sepia-light': {
-    'background-color': '#f4ecd8',
-    'text-color': '#5b4636',
-    'highlight-color': '#e4d5b7',
-  },
-  'sepia-dark': {
-    'background-color': '#3e2c1c',
-    'text-color': '#d8c3a5',
-    'highlight-color': '#4b382a',
-  },
-};
+// Simple theme toggle - light/dark mode only
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  
+  // Toggle between light and dark
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+}
+
+// Initialize theme on page load
+function onLoad() {
+  const html = document.documentElement;
+  const savedTheme = localStorage.getItem('theme');
+  
+  if (savedTheme) {
+    html.setAttribute('data-theme', savedTheme);
+  } else {
+    // Default to light theme
+    html.setAttribute('data-theme', 'light');
+  }
+}
