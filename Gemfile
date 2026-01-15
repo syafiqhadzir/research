@@ -14,7 +14,5 @@ gem "jekyll-minifier"
 gem "autoprefixer-rails"
 gem "jemoji"
 
-group :development do
-  gem "ruby-lsp"
-  gem "debug"
-end
+# Development gems removed for Cloudflare Pages compatibility
+# Install locally with: gem install ruby-lsp debug
