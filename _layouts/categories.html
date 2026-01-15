@@ -9,7 +9,7 @@ title: Research Areas
   <section class="category-section" style="margin-bottom: 4rem">
     {% capture category_name %}{{ category | first }}{% endcapture %}
     <h2
-      id="{{ category_name | slugize }}"
+      id="{{ category_name | slugify }}"
       class="category-title"
       style="
         font-size: 1.25rem;
