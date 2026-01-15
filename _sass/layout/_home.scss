@@ -1,0 +1,146 @@
+// Home Page Layout - Minimalist Clean Design
+// Landing page with enhanced navigation and typography
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Home Container
+// ============================================================================
+
+.home {
+  margin: 0 auto;
+  max-width: 65ch;
+  padding: $space-16 $space-6;
+
+  @include breakpoint("md") {
+    padding: $space-12 $space-5;
+  }
+}
+
+// ============================================================================
+// Home Intro Section
+// ============================================================================
+
+.home__intro {
+  margin-bottom: $space-16;
+  text-align: center;
+
+  @include breakpoint("md") {
+    margin-bottom: $space-12;
+  }
+}
+
+.home__title {
+  color: var(--color-text-primary);
+  font-size: clamp(2.25rem, 2rem + 1.25vw, 3rem);
+  font-weight: $font-weight-bold;
+  letter-spacing: -0.03em;
+  line-height: $line-height-tight;
+  margin: 0 0 $space-6;
+}
+
+.home__tagline {
+  color: var(--color-text-secondary);
+  font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  line-height: $line-height-relaxed;
+  margin: 0;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ============================================================================
+// Home Navigation
+// ============================================================================
+
+.home__nav {
+  margin-bottom: $space-20;
+
+  @include breakpoint("md") {
+    margin-bottom: $space-16;
+  }
+}
+
+.home__nav-list {
+  @include reset-list;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-4;
+  justify-content: center;
+
+  @include breakpoint("md") {
+    gap: $space-3;
+  }
+}
+
+.home__nav-link {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-primary);
+  display: inline-block;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.01em;
+  padding: $space-4 $space-8;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @include breakpoint("md") {
+    font-size: $font-size-sm;
+    padding: $space-3 $space-6;
+  }
+}
+
+// ============================================================================
+// Recent Publications Section
+// ============================================================================
+
+.home__recent {
+  margin-top: $space-20;
+
+  @include breakpoint("md") {
+    margin-top: $space-16;
+  }
+}
+
+.home__recent-title {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.1em;
+  margin-bottom: $space-8;
+  padding-bottom: $space-3;
+  text-transform: uppercase;
+}
+
+.home__view-all {
+  color: var(--color-accent);
+  display: inline-block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  margin-top: $space-8;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    border-radius: var(--radius-sm);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
