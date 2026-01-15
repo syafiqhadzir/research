@@ -1,0 +1,70 @@
+// Reset - Modern CSS Reset
+// Bleeding-edge best practices for consistent cross-browser styling
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Box Sizing Reset
+// ============================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// ============================================================================
+// Root Element
+// ============================================================================
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+// ============================================================================
+// Body
+// ============================================================================
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  margin: 0 auto;
+  max-width: 700px;
+  padding: $space-4xl $space-lg;
+
+  @include breakpoint("md") {
+    padding: $space-4xl $space-xl;
+  }
+}
+
+// ============================================================================
+// Remove Default Margins
+// ============================================================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+// ============================================================================
+// Focus Visible - Accessibility
+// ============================================================================
+
+:focus-visible {
+  outline: 3px solid var(--color-text-primary);
+  outline-offset: 2px;
+}

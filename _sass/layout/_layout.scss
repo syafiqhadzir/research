@@ -1,0 +1,68 @@
+// Layout - Site Structure
+// Main layout containers and sections
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Site Main
+// ============================================================================
+
+.site-main {
+  min-height: 70vh;
+}
+
+// ============================================================================
+// Hero Section
+// ============================================================================
+
+.hero {
+  margin: $space-5xl 0;
+  text-align: left;
+}
+
+.hero__title {
+  @include fluid-type($font-size-3xl, $font-size-4xl);
+
+  letter-spacing: -0.02em;
+  margin: 0 0 $space-sm;
+}
+
+.hero__tagline {
+  color: var(--color-text-muted);
+  font-size: $font-size-lg;
+  margin-bottom: $space-2xl;
+  max-width: 500px;
+}
+
+// ============================================================================
+// Site Footer
+// ============================================================================
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: $font-size-sm;
+  margin-top: $space-5xl;
+  padding-top: $space-2xl;
+  text-align: center;
+}
+
+.site-footer__links {
+  @include flex-center;
+
+  gap: $space-lg;
+  margin-bottom: $space-md;
+}
+
+.site-footer__link {
+  color: var(--color-text-muted);
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+  }
+
+  @include focus-visible;
+}

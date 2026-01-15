@@ -1,0 +1,169 @@
+// Design Tokens - Bleeding-Edge Sass Best Practices 2026
+// Using CSS Custom Properties for runtime theming with Sass variables for compile-time calculations
+
+// ============================================================================
+// Color Palette - Neutral Scale
+// ============================================================================
+
+$color-neutral-50: #ffffff !default;
+$color-neutral-100: #f7f7f7 !default;
+$color-neutral-200: #eeeeee !default;
+$color-neutral-300: #dddddd !default;
+$color-neutral-400: #cccccc !default;
+$color-neutral-500: #999999 !default;
+$color-neutral-600: #888888 !default;
+$color-neutral-700: #666666 !default;
+$color-neutral-800: #333333 !default;
+$color-neutral-900: #1a1a1a !default;
+$color-neutral-950: #121212 !default;
+
+// ============================================================================
+// Spacing Scale - Consistent Rhythm
+// ============================================================================
+
+$space-3xs: 0.125rem !default; // 2px
+$space-2xs: 0.25rem !default; // 4px
+$space-xs: 0.5rem !default; // 8px
+$space-sm: 0.75rem !default; // 12px
+$space-md: 1rem !default; // 16px
+$space-lg: 1.5rem !default; // 24px
+$space-xl: 2rem !default; // 32px
+$space-2xl: 3rem !default; // 48px
+$space-3xl: 4rem !default; // 64px
+$space-4xl: 6rem !default; // 96px
+$space-5xl: 8rem !default; // 128px
+
+// ============================================================================
+// Typography Scale - Fluid Sizing
+// ============================================================================
+
+$font-size-xs: 0.75rem !default; // 12px
+$font-size-sm: 0.875rem !default; // 14px
+$font-size-base: 1rem !default; // 16px
+$font-size-lg: 1.125rem !default; // 18px
+$font-size-xl: 1.25rem !default; // 20px
+$font-size-2xl: 1.5rem !default; // 24px
+$font-size-3xl: 2rem !default; // 32px
+$font-size-4xl: 2.25rem !default; // 36px
+
+// Font Families
+$font-family-base: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+  helvetica, arial, sans-serif !default;
+$font-family-mono: ui-monospace, sfmono-regular, menlo, monaco, consolas,
+  monospace !default;
+
+// Font Weights
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+
+// Line Heights
+$line-height-tight: 1.25 !default;
+$line-height-normal: 1.5 !default;
+$line-height-relaxed: 1.6 !default;
+
+// ============================================================================
+// Border Radius
+// ============================================================================
+
+$radius-sm: 4px !default;
+$radius-md: 8px !default;
+$radius-lg: 12px !default;
+$radius-xl: 20px !default;
+$radius-full: 50% !default;
+
+// ============================================================================
+// Transitions
+// ============================================================================
+
+$transition-fast: 0.1s ease !default;
+$transition-base: 0.2s ease !default;
+$transition-slow: 0.3s ease !default;
+$transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1) !default;
+
+// ============================================================================
+// Breakpoints - Mobile-First
+// ============================================================================
+
+$breakpoint-sm: 640px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
+
+// ============================================================================
+// CSS Custom Properties - Light Theme (Default)
+// ============================================================================
+
+:root {
+  // Colors - Semantic Tokens
+  --color-bg-primary: #{$color-neutral-50};
+  --color-bg-secondary: #{$color-neutral-100};
+  --color-text-primary: #{$color-neutral-900};
+  --color-text-secondary: #{$color-neutral-700};
+  --color-text-muted: #{$color-neutral-600};
+  --color-border: #{$color-neutral-200};
+  --color-link: #{$color-neutral-900};
+
+  // Spacing - Exposed as CSS Variables
+  --space-xs: #{$space-xs};
+  --space-sm: #{$space-sm};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --space-xl: #{$space-xl};
+  --space-2xl: #{$space-2xl};
+  --space-3xl: #{$space-3xl};
+  --space-4xl: #{$space-4xl};
+  --space-5xl: #{$space-5xl};
+
+  // Typography
+  --font-family-base: #{$font-family-base};
+  --font-family-mono: #{$font-family-mono};
+  --font-size-base: #{$font-size-base};
+  --line-height-base: #{$line-height-relaxed};
+
+  // Border Radius
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-full: #{$radius-full};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+  --transition-smooth: #{$transition-smooth};
+
+  // Shadows
+  --shadow-sm: 0 2px 5px rgb(0 0 0 / 10%);
+  --shadow-md: 0 4px 8px rgb(0 0 0 / 15%);
+  --shadow-lg: 0 4px 12px rgb(0 0 0 / 5%);
+  --shadow-xl: 0 4px 20px rgb(0 0 0 / 15%);
+
+  // Z-index Scale
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 500;
+  --z-fixed: 1000;
+  --z-modal: 2000;
+}
+
+// ============================================================================
+// Dark Theme
+// ============================================================================
+
+[data-theme="dark"] {
+  --color-bg-primary: #{$color-neutral-950};
+  --color-bg-secondary: #{$color-neutral-900};
+  --color-text-primary: #{$color-neutral-100};
+  --color-text-secondary: #{$color-neutral-300};
+  --color-text-muted: #{$color-neutral-600};
+  --color-border: #{$color-neutral-800};
+  --color-link: #{$color-neutral-50};
+
+  --shadow-sm: 0 2px 5px rgb(0 0 0 / 30%);
+  --shadow-md: 0 4px 8px rgb(0 0 0 / 40%);
+  --shadow-lg: 0 4px 12px rgb(0 0 0 / 20%);
+  --shadow-xl: 0 4px 20px rgb(0 0 0 / 40%);
+}

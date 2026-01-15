@@ -1,0 +1,219 @@
+// Publication Component - BEM Naming Convention
+// Modern publication list and detail views with reduced nesting
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Publication List
+// ============================================================================
+
+.publication-list {
+  @include reset-list;
+}
+
+.publication-item {
+  display: flex;
+  gap: $space-2xl;
+  margin-bottom: $space-3xl;
+
+  @include breakpoint-max("sm") {
+    flex-direction: column;
+    gap: $space-sm;
+  }
+}
+
+.publication__meta {
+  color: var(--color-text-muted);
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  min-width: 60px;
+}
+
+.publication__content {
+  flex: 1;
+}
+
+.publication__title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  margin: 0 0 $space-sm;
+}
+
+.publication__link {
+  text-decoration: none;
+
+  @include focus-visible;
+}
+
+.publication__authors {
+  color: var(--color-text-primary);
+  font-size: $font-size-sm;
+  margin-bottom: $space-2xs;
+
+  strong,
+  b {
+    font-weight: $font-weight-bold;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+.publication__venue {
+  color: var(--color-text-muted);
+  font-size: $font-size-sm;
+  margin-bottom: $space-sm;
+}
+
+.publication__excerpt {
+  color: var(--color-text-muted);
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  margin-bottom: $space-md;
+}
+
+.publication__links {
+  display: flex;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  gap: $space-md;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.publication__link-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-decoration: none;
+  transition: color var(--transition-base);
+
+  &:hover {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+  }
+
+  @include focus-visible;
+}
+
+// ============================================================================
+// Publication List Variants
+// ============================================================================
+
+.publication-list--minimal {
+  .publication-item {
+    gap: $space-md;
+    margin-bottom: $space-2xl;
+  }
+
+  .publication__meta {
+    font-size: $font-size-sm;
+    min-width: 40px;
+  }
+
+  .publication__title {
+    font-size: $font-size-lg;
+  }
+}
+
+// ============================================================================
+// Publication Detail
+// ============================================================================
+
+.publication-detail {
+  // Container styles if needed
+}
+
+.publication-detail__header {
+  margin-bottom: $space-4xl;
+}
+
+.publication-detail__authors {
+  color: var(--color-text-primary);
+  font-size: $font-size-lg;
+  margin-bottom: $space-sm;
+}
+
+.publication-detail__venue {
+  color: var(--color-text-muted);
+  font-size: $font-size-base;
+  margin-bottom: $space-2xl;
+}
+
+.publication-detail__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-top: $space-lg;
+}
+
+.publication-detail__link-btn {
+  align-items: center;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  letter-spacing: normal;
+  padding: $space-sm $space-md;
+  text-decoration: none;
+  text-transform: none;
+  transition: all var(--transition-base);
+
+  &:hover {
+    background: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+    box-shadow: var(--shadow-md);
+    color: var(--color-bg-primary);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include focus-visible;
+}
+
+// ============================================================================
+// BibTeX Container
+// ============================================================================
+
+.bibtex-container {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: $space-md;
+  position: relative;
+
+  pre {
+    background: none;
+    margin: 0;
+    overflow-x: auto;
+    padding: 0;
+  }
+}
+
+// ============================================================================
+// Recent Publications Section
+// ============================================================================
+
+.recent-publications {
+  margin-top: $space-5xl;
+}
+
+.recent-publications__title {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: $font-size-xs;
+  letter-spacing: 0.1em;
+  margin-bottom: $space-2xl;
+  padding-bottom: $space-sm;
+  text-transform: uppercase;
+}

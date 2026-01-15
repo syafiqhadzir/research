@@ -1,0 +1,54 @@
+// Typography - Modern Type System
+// Fluid typography with semantic heading hierarchy
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Headings
+// ============================================================================
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  margin: $space-2xl 0 $space-md;
+}
+
+h1 {
+  @include fluid-type($font-size-3xl, $font-size-4xl);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  @include fluid-type($font-size-2xl, $font-size-3xl);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  @include fluid-type($font-size-xl, $font-size-2xl);
+}
+
+h4 {
+  @include fluid-type($font-size-lg, $font-size-xl);
+}
+
+// ============================================================================
+// Links
+// ============================================================================
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: text-decoration-color var(--transition-base);
+
+  &:hover {
+    text-decoration-color: var(--color-link);
+  }
+
+  @include focus-visible;
+}

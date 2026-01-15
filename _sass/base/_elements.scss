@@ -1,0 +1,78 @@
+// Elements - Base Element Styles
+// Semantic HTML elements with modern styling
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Blockquotes
+// ============================================================================
+
+blockquote {
+  border-left: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin: $space-2xl 0;
+  padding-left: $space-lg;
+}
+
+// ============================================================================
+// Code Blocks
+// ============================================================================
+
+code {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  padding: $space-2xs $space-xs;
+}
+
+pre {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  margin: $space-2xl 0;
+  overflow-x: auto;
+  padding: $space-lg;
+
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+// Dark theme code background
+[data-theme="dark"] {
+  code,
+  pre {
+    background: $color-neutral-900;
+  }
+}
+
+// ============================================================================
+// Horizontal Rules
+// ============================================================================
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: $space-4xl 0;
+}
+
+// ============================================================================
+// Lists
+// ============================================================================
+
+ul,
+ol {
+  padding-left: $space-lg;
+}
+
+// ============================================================================
+// Images
+// ============================================================================
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}

@@ -1,0 +1,125 @@
+// Category Component - BEM Naming Convention
+// Modern category chips with interactive states
+
+@use "../abstracts" as *;
+
+// ============================================================================
+// Blog Header
+// ============================================================================
+
+.blog-header {
+  margin-bottom: $space-4xl;
+}
+
+.blog-header__title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  margin: 0 0 $space-lg;
+}
+
+// ============================================================================
+// Category Navigation
+// ============================================================================
+
+.category-nav {
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  gap: $space-lg;
+  padding-bottom: $space-md;
+}
+
+.category-link,
+.category-btn {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: $font-size-sm;
+  padding: $space-xs $space-md;
+  text-decoration: none;
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-text-primary);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include focus-visible;
+}
+
+.category-link--active,
+.category-btn--active {
+  background: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  box-shadow: var(--shadow-md);
+  color: var(--color-bg-primary);
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+}
+
+// ============================================================================
+// Category Section
+// ============================================================================
+
+.category-section {
+  margin-bottom: $space-3xl;
+}
+
+.category-section__title {
+  border-bottom: 1px solid var(--color-border);
+  font-size: $font-size-2xl;
+  margin-bottom: $space-md;
+  padding-bottom: $space-sm;
+}
+
+.category-section__posts {
+  @include reset-list;
+}
+
+.category-section__item {
+  display: flex;
+  gap: $space-2xl;
+  margin-bottom: $space-sm;
+}
+
+.category-section__date {
+  color: var(--color-text-muted);
+  font-size: $font-size-sm;
+  min-width: 100px;
+}
+
+.category-section__link {
+  text-underline-offset: 3px;
+
+  @include focus-visible;
+}
+
+// ============================================================================
+// View All Link
+// ============================================================================
+
+.view-all-link {
+  color: var(--color-text-muted);
+  display: inline-block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  margin-top: $space-md;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+  }
+
+  @include focus-visible;
+}
