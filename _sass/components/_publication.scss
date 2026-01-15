@@ -152,6 +152,18 @@
   margin-bottom: $space-sm;
 }
 
+.publication-detail__meta {
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  margin-bottom: $space-8;
+}
+
+.publication-detail__content {
+  color: var(--color-text-primary);
+  line-height: $line-height-relaxed;
+  margin-bottom: $space-12;
+}
+
 .publication-detail__venue {
   color: var(--color-text-muted);
   font-size: $font-size-base;
@@ -161,8 +173,8 @@
 .publication-detail__links {
   display: flex;
   flex-wrap: wrap;
-  gap: $space-sm;
-  margin-top: $space-lg;
+  gap: $space-4;
+  margin-bottom: $space-12;
 }
 
 .publication-detail__link-btn {
@@ -171,7 +183,9 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   color: var(--color-text-primary);
+  cursor: pointer;
   display: inline-flex;
+  font-family: inherit;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   letter-spacing: 0.01em;

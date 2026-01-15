@@ -41,17 +41,29 @@ for author in author_list %}
           page.date | date: "%B %d, %Y" }} {% endif %}
         </div>
 
-        <div class="pub-links detail-links">
+        <div class="publication-detail__links">
           {% if page.pdf %}
-          <a href="{{ page.pdf }}" class="pub-link-btn" target="_blank">PDF</a>
-          {% endif %} {% if page.code %}
-          <a href="{{ page.code }}" class="pub-link-btn" target="_blank"
-            >Source Code</a
+          <a
+            href="{{ page.pdf }}"
+            class="publication-detail__link-btn"
+            target="_blank"
+            rel="noopener"
           >
+            PDF
+          </a>
+          {% endif %} {% if page.code %}
+          <a
+            href="{{ page.code }}"
+            class="publication-detail__link-btn"
+            target="_blank"
+            rel="noopener"
+          >
+            Source Code
+          </a>
           {% endif %} {% if page.bibtex %}
           <button
             onclick="toggleBibtex()"
-            class="pub-link-btn"
+            class="publication-detail__link-btn"
             id="bibtex-toggle"
           >
             Cite BibTeX
