@@ -4,14 +4,14 @@
 @use "../abstracts" as *;
 
 // ============================================================================
-// Blog Header
+// Publications Header
 // ============================================================================
 
-.blog-header {
+.publication-header {
   margin-bottom: $space-4xl;
 }
 
-.blog-header__title {
+.publication-header__title {
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   margin: 0 0 $space-lg;
