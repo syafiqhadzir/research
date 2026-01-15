@@ -45,9 +45,15 @@ for author in author_list %}
           {% if page.pdf %}
           <a href="{{ page.pdf }}" class="pub-link-btn" target="_blank">PDF</a>
           {% endif %} {% if page.code %}
-          <a href="{{ page.code }}" class="pub-link-btn" target="_blank">Source Code</a>
+          <a href="{{ page.code }}" class="pub-link-btn" target="_blank"
+            >Source Code</a
+          >
           {% endif %} {% if page.bibtex %}
-          <button onclick="toggleBibtex()" class="pub-link-btn" id="bibtex-toggle">
+          <button
+            onclick="toggleBibtex()"
+            class="pub-link-btn"
+            id="bibtex-toggle"
+          >
             Cite BibTeX
           </button>
           {% endif %}
@@ -55,9 +61,37 @@ for author in author_list %}
 
         {% if page.bibtex %}
         <div id="bibtex-container" style="display: none; margin-top: 1rem">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
-            <span style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted);">BibTeX Reference</span>
-            <button onclick="copyBibtex()" style="background: none; border: none; color: var(--link); cursor: pointer; font-size: 0.85rem; padding: 0;">Copy</button>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 0.5rem;
+              border-bottom: 1px solid var(--border);
+              padding-bottom: 0.5rem;
+            "
+          >
+            <span
+              style="
+                font-weight: 600;
+                font-size: 0.9rem;
+                color: var(--text-muted);
+              "
+              >BibTeX Reference</span
+            >
+            <button
+              onclick="copyBibtex()"
+              style="
+                background: none;
+                border: none;
+                color: var(--link);
+                cursor: pointer;
+                font-size: 0.85rem;
+                padding: 0;
+              "
+            >
+              Copy
+            </button>
           </div>
           <pre><code id="bibtex-content">{{ page.bibtex }}</code></pre>
         </div>
@@ -76,11 +110,14 @@ for author in author_list %}
 
           function copyBibtex() {
             var content = document.getElementById("bibtex-content").innerText;
-            navigator.clipboard.writeText(content).then(function() {
-              alert("BibTeX copied to clipboard!");
-            }, function(err) {
-              console.error('Could not copy text: ', err);
-            });
+            navigator.clipboard.writeText(content).then(
+              function () {
+                alert("BibTeX copied to clipboard!");
+              },
+              function (err) {
+                console.error("Could not copy text: ", err);
+              }
+            );
           }
         </script>
         {% endif %}
@@ -88,18 +125,20 @@ for author in author_list %}
 
       <div class="post-content">{{ content }}</div>
 
-      <div class="post-share">
-        {% include share_buttons.html %}
-      </div>
+      <div class="post-share">{% include share_buttons.html %}</div>
 
       <footer class="post-footer">
         <div class="post-categories">
           Research Areas: {% for category in page.categories %}
-          <a href="{{site.baseurl}}/categories/#{{category|slugize}}"
-            >{{category}}</a
+          <a
+            href="{{ site.baseurl }}/categories/#{{ category | slugify }}"
+            class="category-chip"
+          >
+            {{ category }} </a
           >{% unless forloop.last %}, {% endunless %} {% endfor %}
         </div>
       </footer>
     </article>
   </main>
 </div>
+```
