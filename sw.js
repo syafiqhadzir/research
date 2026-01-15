@@ -4,7 +4,7 @@ const ASSETS_TO_CACHE = [
   '/assets/css/styles.css',
   '/favicons/favicon.svg',
   '/about/',
-  '/publications/'
+  '/publications/',
 ];
 
 // Install event - cache assets
@@ -14,7 +14,7 @@ self.addEventListener('install', event => {
       .then(cache => {
         console.log('Opened cache');
         return cache.addAll(ASSETS_TO_CACHE);
-      })
+      }),
   );
 });
 
@@ -28,7 +28,7 @@ self.addEventListener('fetch', event => {
           return response;
         }
         return fetch(event.request);
-      })
+      }),
   );
 });
 
@@ -36,14 +36,12 @@ self.addEventListener('fetch', event => {
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then(cacheNames => Promise.all(
+      cacheNames.map(cacheName => {
+        if (cacheWhitelist.indexOf(cacheName) === -1) {
+          return caches.delete(cacheName);
+        }
+      }),
+    )),
   );
 });
