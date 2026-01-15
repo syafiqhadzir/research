@@ -44,26 +44,26 @@ title: Publications
     class="publication-item"
     data-categories="{% for cat in post.categories %}{{ cat | slugify }} {% endfor %}"
   >
-    <div class="publication-meta">
-      <span class="pub-year">{{ post.date | date: "%Y" }}</span>
-    </div>
-    <div class="publication-content">
-      <h3 class="pub-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <span class="publication__meta">{{ post.date | date: "%Y" }}</span>
+    <div class="publication__content">
+      <h3 class="publication__title">
+        <a href="{{ post.url | relative_url }}" class="publication__link"
+          >{{ post.title }}</a
+        >
       </h3>
-      <div class="pub-authors">
+      <div class="publication__authors">
         {% if post.authors %} {{ post.authors | replace: "Syafiq Hadzir",
         "<strong>Syafiq Hadzir</strong>" }} {% else %}
         <strong>{{ site.author_name }}</strong>
         {% endif %}
       </div>
-      <div class="pub-venue">
+      <div class="publication__venue">
         {% if post.venue %}
         <em>{{ post.venue }}</em>
         {% endif %}
       </div>
       {% if post.excerpt %}
-      <p class="pub-excerpt">
+      <p class="publication__excerpt">
         {{ post.excerpt | strip_html | truncatewords: 25 }}
       </p>
       {% endif %}
