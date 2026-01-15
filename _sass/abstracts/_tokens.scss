@@ -44,6 +44,8 @@ $space-20: 5rem !default; // 80px
 $space-24: 6rem !default; // 96px
 
 // Legacy spacing (for backward compatibility)
+$space-3xs: $space-0-5 !default; // 2px
+$space-2xs: $space-1 !default; // 4px
 $space-xs: $space-2 !default;
 $space-sm: $space-3 !default;
 $space-md: $space-4 !default;
