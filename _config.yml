@@ -7,6 +7,37 @@ google_scholar: ""
 orcid: ""
 github_username: "syafiqhadzir"
 
+# Performance Optimization
+incremental: true
+
+# Exclude unnecessary files from build
+exclude:
+  - node_modules
+  - .git
+  - .github
+  - screenshots
+  - README.md
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - .ruby-lsp
+  - .ruby-version
+  - renovate.json
+  - wrangler.toml
+  - _headers
+
+# Liquid options for performance
+liquid:
+  error_mode: strict
+  strict_filters: true
+  strict_variables: false
+
+# Sass optimization
+sass:
+  style: compressed
+  sourcemap: never
+
 # Plugins
 plugins:
   - jekyll-seo-tag
