@@ -31,27 +31,22 @@
 }
 
 .category-link,
-.category-btn {
+.category__link {
   background: var(--color-bg-primary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  color: var(--color-text-muted);
-  cursor: pointer;
-  font: inherit;
+  color: var(--color-text-primary);
+  display: inline-block;
   font-size: $font-size-sm;
-  padding: $space-xs $space-md;
+  font-weight: $font-weight-medium;
+  padding: $space-sm $space-md;
   text-decoration: none;
-  transition: all var(--transition-base);
 
   &:hover {
+    background: var(--color-text-primary);
     border-color: var(--color-text-primary);
-    box-shadow: var(--shadow-sm);
-    color: var(--color-text-primary);
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(0);
+    box-shadow: var(--shadow-md);
+    color: var(--color-bg-primary);
   }
 
   @include focus-visible;

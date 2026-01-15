@@ -104,7 +104,6 @@
 // ============================================================================
 
 @mixin interactive-states {
-  transition: all var(--transition-base);
   cursor: pointer;
 
   &:hover {
