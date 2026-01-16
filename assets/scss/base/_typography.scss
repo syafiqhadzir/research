@@ -22,6 +22,7 @@ body {
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
   line-height: $line-height-normal;
+  transition: $transition-colors;
 
   // Light mode colors
   color: $neutral-900;

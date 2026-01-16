@@ -27,6 +27,12 @@ $neutral-950: #0a0a0a;
 $accent: #3b82f6;
 $accent-light: #60a5fa;
 $accent-dark: #2563eb;
+$accent-hover: #1d4ed8;
+
+// Dark mode specific colors for better contrast
+$dark-bg: #0f0f0f;
+$dark-surface: #1a1a1a;
+$dark-elevated: #242424;
 
 // Functional colors
 $green-500: #22c55e;
@@ -167,8 +173,18 @@ $shadow-xl:
 $transition-duration-fast: 150ms;
 $transition-duration-base: 200ms;
 $transition-duration-slow: 300ms;
-$transition-timing-default: ease;
-$transition-timing-in-out: ease-in-out;
+$transition-duration-slower: 500ms;
+$transition-timing-default: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-timing-in: cubic-bezier(0.4, 0, 1, 1);
+$transition-timing-out: cubic-bezier(0, 0, 0.2, 1);
+$transition-timing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Color transition for theme switching
+$transition-colors: color $transition-duration-base $transition-timing-default,
+  background-color $transition-duration-base $transition-timing-default,
+  border-color $transition-duration-base $transition-timing-default,
+  box-shadow $transition-duration-base $transition-timing-default;
 
 // --------------------------------------------------------------------------
 // Z-INDEX SCALE

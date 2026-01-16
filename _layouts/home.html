@@ -65,7 +65,7 @@ layout: default
     {% for post in site.posts limit:5 %}
     <li class="group">
       <article
-        class="flex flex-col sm:flex-row gap-4 sm:gap-8 py-4 -mx-4 px-4 rounded-xl transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
+        class="flex flex-col sm:flex-row gap-4 sm:gap-8 py-4 -mx-4 px-4 rounded-xl transition-all duration-200 hover:bg-neutral-50/80 dark:hover:bg-neutral-900/60 hover:shadow-sm dark:hover:shadow-none hover:-translate-y-0.5"
       >
         <!-- Year -->
         <time
@@ -80,7 +80,7 @@ layout: default
           <h3 class="text-base font-semibold leading-snug mb-1">
             <a
               href="{{ post.url | relative_url }}"
-              class="text-neutral-900 dark:text-neutral-100 hover:text-accent dark:hover:text-accent-light transition-colors duration-200"
+              class="text-neutral-900 dark:text-neutral-100 hover:text-accent dark:hover:text-accent-light transition-all duration-200 hover:underline decoration-2 underline-offset-2"
             >
               {{ post.title }}
             </a>
@@ -146,7 +146,7 @@ layout: default
   <!-- Empty state -->
   <div class="text-center py-12">
     <div
-      class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-neutral-100 dark:bg-neutral-900 mb-4"
+      class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-neutral-100 dark:bg-neutral-900 mb-4 shadow-inner"
     >
       <svg class="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path

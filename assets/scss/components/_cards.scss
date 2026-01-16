@@ -15,12 +15,27 @@
   background-color: color.change(#fff, $alpha: 0.7);
   border: $border-width-default solid color.change($neutral-200, $alpha: 0.5);
   border-radius: $border-radius-xl;
-  box-shadow: 0 10px 15px -3px color.change($neutral-900, $alpha: 0.05);
+  box-shadow: 0 10px 15px -3px color.change($neutral-900, $alpha: 0.05),
+    0 4px 6px -2px color.change($neutral-900, $alpha: 0.03);
+  transition: $transition-colors, transform $transition-duration-base $transition-timing-out,
+    box-shadow $transition-duration-base $transition-timing-out;
 
   @include dark-mode {
-    background-color: color.change($neutral-900, $alpha: 0.7);
-    border-color: color.change($neutral-800, $alpha: 0.5);
-    box-shadow: 0 10px 15px -3px color.change(#000, $alpha: 0.2);
+    background-color: color.change($dark-surface, $alpha: 0.8);
+    border-color: color.change($neutral-700, $alpha: 0.5);
+    box-shadow: 0 10px 15px -3px color.change(#000, $alpha: 0.3),
+      0 4px 6px -2px color.change(#000, $alpha: 0.2);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px color.change($neutral-900, $alpha: 0.08),
+      0 10px 10px -5px color.change($neutral-900, $alpha: 0.04);
+
+    @include dark-mode {
+      box-shadow: 0 20px 25px -5px color.change(#000, $alpha: 0.4),
+        0 10px 10px -5px color.change(#000, $alpha: 0.3);
+    }
   }
 }
 

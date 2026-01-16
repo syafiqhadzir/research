@@ -3,6 +3,7 @@
 // ==========================================================================
 // Button component variants
 
+@use 'sass:color';
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
@@ -41,10 +42,17 @@
 
   background-color: $accent;
   color: #fff;
+  box-shadow: 0 1px 2px 0 color.change($accent, $alpha: 0.3);
 
   &:hover:not(:disabled) {
     background-color: $accent-dark;
-    box-shadow: $shadow-lg;
+    box-shadow: 0 4px 12px -2px color.change($accent, $alpha: 0.4),
+      0 2px 4px -1px color.change($accent, $alpha: 0.2);
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
   }
 }
 
@@ -62,12 +70,12 @@
   }
 
   &:hover:not(:disabled) {
-    color: $neutral-900;
-    background-color: $neutral-100;
+    color: $accent;
+    background-color: color.change($accent, $alpha: 0.05);
 
     @include dark-mode {
-      color: #fff;
-      background-color: $neutral-800;
+      color: $accent-light;
+      background-color: color.change($accent-light, $alpha: 0.1);
     }
   }
 }
@@ -109,28 +117,33 @@
   border-radius: $border-radius-full;
   background-color: $neutral-100;
   color: $neutral-600;
+  border: 1px solid transparent;
 
   @include dark-mode {
-    background-color: $neutral-800;
+    background-color: color.change($neutral-800, $alpha: 0.6);
     color: $neutral-400;
   }
 
   &:hover {
     background-color: $neutral-200;
+    border-color: $neutral-300;
 
     @include dark-mode {
-      background-color: $neutral-700;
+      background-color: color.change($neutral-700, $alpha: 0.8);
+      border-color: $neutral-600;
     }
   }
 
   &.is-active {
-    background-color: $neutral-900;
+    background: linear-gradient(135deg, $accent-dark, $accent);
     color: #fff;
     cursor: default;
+    border-color: transparent;
+    box-shadow: 0 2px 8px color.change($accent, $alpha: 0.3);
 
     @include dark-mode {
-      background-color: #fff;
-      color: $neutral-900;
+      background: linear-gradient(135deg, $accent, $accent-light);
+      box-shadow: 0 2px 12px color.change($accent-light, $alpha: 0.4);
     }
   }
 }

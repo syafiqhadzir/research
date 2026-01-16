@@ -15,9 +15,10 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: #fff;
+  transition: $transition-colors;
 
   @include dark-mode {
-    background-color: $neutral-950;
+    background-color: $dark-bg;
   }
 }
 
@@ -68,23 +69,24 @@ body {
   background-color: $neutral-100;
 
   .dark & {
-    background-color: $neutral-900;
+    background-color: $dark-bg;
   }
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: $neutral-300;
   border-radius: $border-radius-full;
+  transition: background-color $transition-duration-fast $transition-timing-default;
 
   .dark & {
     background-color: $neutral-700;
   }
 
   &:hover {
-    background-color: $neutral-400;
+    background-color: $accent;
 
     .dark & {
-      background-color: $neutral-600;
+      background-color: $accent-light;
     }
   }
 }
