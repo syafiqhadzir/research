@@ -23,9 +23,11 @@ $color-values: ();
 // Add accents
 @each $name, $value in map.get($colors, 'accent') {
   $key: 'accent-#{$name}';
+
   @if $name == 'default' {
     $key: 'accent';
   }
+
   $color-values: map.merge(
     $color-values,
     (

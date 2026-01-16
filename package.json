@@ -4,11 +4,12 @@
   "private": true,
   "description": "Research portfolio focusing on world-class publications and academic projects.",
   "scripts": {
-    "sass:build": "npx sass ./assets/scss/main.scss ./assets/css/styles.css --style=compressed --no-source-map",
-    "sass:watch": "npx sass ./assets/scss/main.scss ./assets/css/styles.css --watch",
-    "postcss:build": "npx postcss ./assets/css/styles.css -r --no-map",
+    "sass:build": "npx sass ./assets/scss/main.scss ./assets/css/styles.temp.css --style=compressed --no-source-map",
+    "sass:watch": "npx sass ./assets/scss/main.scss ./assets/css/styles.temp.css --watch",
+    "postcss:build": "npx postcss ./assets/css/styles.temp.css -o ./assets/css/styles.css --no-map",
+    "postcss:watch": "npx postcss ./assets/css/styles.temp.css -o ./assets/css/styles.css --watch --no-map",
     "build:css": "npm run sass:build && npm run postcss:build",
-    "watch:css": "npm run sass:watch",
+    "watch:css": "concurrently \"npm run sass:watch\" \"npm run postcss:watch\"",
     "dev": "npm run watch:css",
     "build": "npm run build:css",
     "lint:scss": "stylelint \"assets/scss/**/*.scss\"",
@@ -28,7 +29,9 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.18.0",
+    "@tailwindcss/postcss": "^4.1.18",
     "autoprefixer": "^10.4.23",
+    "concurrently": "^9.2.1",
     "eslint": "^9.18.0",
     "globals": "^15.14.0",
     "markdownlint-cli": "^0.43.0",
@@ -37,7 +40,8 @@
     "prettier": "^3.0.0",
     "sass": "^1.88.0",
     "stylelint": "^16.12.0",
-    "stylelint-config-standard-scss": "^14.0.0"
+    "stylelint-config-standard-scss": "^14.0.0",
+    "tailwindcss": "^4.1.18"
   },
   "main": "sw.js",
   "repository": {

@@ -2,7 +2,12 @@
   "extends": "stylelint-config-standard-scss",
   "rules": {
     "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "layer", "config", "theme", "plugin", "utility", "variant"]
+      }
+    ],
     "no-empty-source": true,
     "color-named": "never",
     "font-family-name-quotes": "always-where-recommended",

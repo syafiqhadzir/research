@@ -34,3 +34,6 @@ Desktop.ini
 *.sublime-project
 *.sublime-workspace
 *.swp
+
+assets/css/styles.temp.css
+assets/css/styles.temp.css.map
