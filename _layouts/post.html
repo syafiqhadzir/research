@@ -75,7 +75,7 @@ layout: default
     </h1>
 
     <!-- Meta info -->
-    <div class="flex flex-wrap items-center gap-3 text-sm text-neutral-500 dark:text-neutral-500">
+    <div class="flex flex-wrap items-center gap-3 text-sm text-neutral-700 dark:text-neutral-300">
       <time datetime="{{ page.date | date: '%Y-%m-%d' }}" class="font-mono">
         {{ page.date | date: "%B %d, %Y" }}
       </time>
@@ -94,7 +94,7 @@ layout: default
   </header>
 
   <!-- Post Content -->
-  <div class="prose-content text-neutral-700 dark:text-neutral-300 leading-relaxed">
+  <div class="prose-content text-neutral-800 dark:text-neutral-200 leading-relaxed">
     {{ content }}
   </div>
 
@@ -103,7 +103,7 @@ layout: default
     <!-- Tags if present -->
     {% if page.tags.size > 0 %}
     <div class="mb-8">
-      <h3 class="text-xs uppercase tracking-widest text-neutral-500 mb-3">Tags</h3>
+      <h3 class="text-xs uppercase tracking-widest text-neutral-700 dark:text-neutral-300 mb-3">Tags</h3>
       <div class="flex flex-wrap gap-2">
         {% for tag in page.tags %}
         <span class="btn btn-sm btn-pill btn-outline cursor-default">
@@ -127,7 +127,7 @@ layout: default
         href="{{ page.previous.url | relative_url }}"
         class="group flex-1 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-accent/50 dark:hover:border-accent/50 transition-colors duration-200"
       >
-        <span class="block text-xs text-neutral-500 mb-1">← Previous</span>
+        <span class="block text-xs text-neutral-700 dark:text-neutral-300 mb-1">← Previous</span>
         <span
           class="block text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-200 line-clamp-2"
         >
@@ -141,7 +141,7 @@ layout: default
         href="{{ page.next.url | relative_url }}"
         class="group flex-1 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-accent/50 dark:hover:border-accent/50 transition-colors duration-200 text-right"
       >
-        <span class="block text-xs text-neutral-500 mb-1">Next →</span>
+        <span class="block text-xs text-neutral-700 dark:text-neutral-300 mb-1">Next →</span>
         <span
           class="block text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-200 line-clamp-2"
         >

@@ -49,21 +49,21 @@ body {
 
     position: fixed; // Fixed for better visibility
     z-index: $z-index-tooltip;
-    top: $spacing-4;
-    left: $spacing-4;
-    padding: $spacing-3 $spacing-6;
-    background-color: $accent-dark; // AAA contrast
+    top: $spacing-6;
+    left: 50%;
+    transform: translateX(-50%); // Center horizontally
+    padding: $spacing-4 $spacing-8;
+    background-color: $accent-dark; // AAA contrast (8.59:1)
     color: #fff;
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-base;
-    border-radius: $border-radius-base;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-
+    font-weight: $font-weight-bold; // Enhanced from semibold
+    font-size: $font-size-lg; // Increased for better visibility
+    border-radius: $border-radius-lg;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    
     // High contrast border for better visibility
-    outline: 3px solid #fff;
-    outline-offset: 2px;
+    outline: 4px solid $accent-light;
+    outline-offset: 3px;
   }
 }
 

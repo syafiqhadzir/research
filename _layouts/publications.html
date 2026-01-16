@@ -53,9 +53,10 @@ layout: default
 </header>
 
 <!-- Blog Section -->
-<section>
+<section aria-labelledby="publications-heading">
   <!-- Page Title -->
   <h2
+    id="publications-heading"
     class="text-2xl md:text-3xl font-bold tracking-tighter mb-8 text-neutral-900 dark:text-neutral-100"
   >
     {{ page.title | default: "Blog" }}
@@ -63,12 +64,13 @@ layout: default
 
   <!-- Category Filter -->
   {% assign categories = site.categories | sort %} {% if categories.size > 0 %}
-  <div class="mb-10">
+  <div class="mb-10" role="toolbar" aria-label="Article category filters">
     <div class="flex flex-wrap gap-2 mb-6">
       <button
         data-category="all"
         class="btn-filter is-active"
         aria-label="Show all articles"
+        aria-pressed="true"
       >
         All
       </button>
@@ -77,9 +79,10 @@ layout: default
         data-category="{{ category[0] | downcase | replace: ' ', '-' }}"
         class="btn-filter"
         aria-label="Filter by {{ category[0] }}"
+        aria-pressed="false"
       >
         {{ category[0] }}
-        <span class="ml-1 opacity-60">({{ category[1].size }})</span>
+        <span class="ml-1 opacity-60" aria-hidden="true">({{ category[1].size }})</span>
       </button>
       {% endfor %}
     </div>
@@ -101,7 +104,7 @@ layout: default
           <td class="py-3 px-4 w-32 align-middle whitespace-nowrap">
             <time
               datetime="{{ post.date | date: '%Y-%m-%d' }}"
-              class="text-neutral-400 dark:text-neutral-500 font-mono text-sm"
+              class="text-neutral-700 dark:text-neutral-300 font-mono text-sm"
             >
               {{ post.date | date: "%b %d, %Y" }}
             </time>
@@ -139,7 +142,7 @@ layout: default
     <div
       class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-neutral-100 dark:bg-neutral-900 mb-6"
     >
-      <svg class="w-10 h-10 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-10 h-10 text-neutral-700 dark:text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -149,7 +152,7 @@ layout: default
       </svg>
     </div>
     <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">No posts yet</h3>
-    <p class="text-neutral-500 dark:text-neutral-500">Check back soon for new content!</p>
+    <p class="text-neutral-700 dark:text-neutral-300">Check back soon for new content!</p>
   </div>
   {% endif %}
 </section>

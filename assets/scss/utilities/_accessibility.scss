@@ -28,12 +28,15 @@
   @include visually-visible;
   position: fixed;
   z-index: $z-index-tooltip;
-  padding: $spacing-3 $spacing-5;
+  padding: $spacing-4 $spacing-6;
   background-color: $accent-dark;
   color: #fff;
-  font-weight: $font-weight-semibold;
-  border-radius: $border-radius-base;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: $font-weight-bold; // Enhanced from semibold
+  font-size: $font-size-lg; // Increased for visibility
+  border-radius: $border-radius-lg;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  outline: 4px solid $accent-light; // Enhanced outline
+  outline-offset: 3px;
 }
 
 // --------------------------------------------------------------------------
@@ -114,20 +117,20 @@
     &:focus {
       @include visually-visible;
       position: fixed;
-      top: $spacing-4;
-      left: $spacing-4;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); // Center on screen
       z-index: $z-index-tooltip;
-      padding: $spacing-3 $spacing-6;
+      padding: $spacing-4 $spacing-8;
       background-color: $accent-dark;
       color: #fff;
-      font-weight: $font-weight-semibold;
-      font-size: $font-size-base;
-      border-radius: $border-radius-base;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      outline: 3px solid #fff;
-      outline-offset: 2px;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-lg;
+      border-radius: $border-radius-lg;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+      outline: 4px solid $accent-light;
+      outline-offset: 3px;
     }
   }
 }

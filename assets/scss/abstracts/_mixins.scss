@@ -122,11 +122,15 @@
 /// Focus ring for accessibility (WCAG AAA compliant)
 /// @param {Color} $color - Ring color
 /// @param {Number} $width - Ring width (min 3px for AAA)
-@mixin focus-ring($color: $accent-dark, $width: 3px) {
+@mixin focus-ring($color: $accent-dark, $width: 4px) {
   outline: $width solid $color;
-  outline-offset: 3px;
-  box-shadow: 0 0 0 1px #fff, 0 0 0 calc(#{$width} + 1px) $color;
+  outline-offset: 4px; // Increased for better visibility
+  box-shadow: 0 0 0 2px #fff, 0 0 0 calc(#{$width} + 2px) $color;
   transition: none; // Instant focus visibility
+  
+  @include dark-mode {
+    box-shadow: 0 0 0 2px #000, 0 0 0 calc(#{$width} + 2px) $color;
+  }
 }
 
 /// Glass morphism effect

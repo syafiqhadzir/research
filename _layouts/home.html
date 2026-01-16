@@ -11,7 +11,7 @@ layout: default
   </h1>
 
   <!-- Tagline -->
-  <p class="text-neutral-600 dark:text-neutral-400 text-base md:text-lg leading-relaxed max-w-lg">
+  <p class="text-neutral-800 dark:text-neutral-200 text-base md:text-lg leading-relaxed max-w-lg">
     {{ page.home_text }}
   </p>
 </header>
@@ -56,7 +56,7 @@ layout: default
 <section aria-labelledby="recent-articles-heading">
   <h2
     id="recent-articles-heading"
-    class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-500 border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-10"
+    class="text-xs uppercase tracking-widest text-neutral-700 dark:text-neutral-300 border-b-2 border-neutral-300 dark:border-neutral-700 pb-3 mb-10"
   >
     Recent Articles
   </h2>
@@ -71,7 +71,7 @@ layout: default
         <!-- Year -->
         <time
           datetime="{{ post.date | date: '%Y-%m-%d' }}"
-          class="text-neutral-400 dark:text-neutral-500 font-mono text-sm shrink-0 min-w-16"
+          class="text-neutral-700 dark:text-neutral-300 font-mono text-sm shrink-0 min-w-16"
         >
           {{ post.date | date: "%b %d" }}
         </time>
@@ -88,7 +88,7 @@ layout: default
           </h3>
 
           {% if post.excerpt %}
-          <p class="text-neutral-600 dark:text-neutral-400 text-sm line-clamp-2">
+          <p class="text-neutral-800 dark:text-neutral-200 text-sm line-clamp-2">
             {{ post.excerpt | strip_html | truncate: 120 }}
           </p>
           {% endif %} {% if post.categories.size > 0 %}
@@ -104,7 +104,7 @@ layout: default
 
         <!-- Arrow indicator -->
         <span
-          class="hidden sm:flex items-center text-neutral-300 dark:text-neutral-700 group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-200"
+          class="hidden sm:flex items-center text-neutral-400 dark:text-neutral-600 group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-200"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -150,7 +150,7 @@ layout: default
       class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-neutral-100 dark:bg-neutral-900 mb-4 shadow-inner"
       aria-hidden="true"
     >
-      <svg class="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-8 h-8 text-neutral-700 dark:text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -159,7 +159,7 @@ layout: default
         />
       </svg>
     </div>
-    <p class="text-neutral-500 dark:text-neutral-500">No posts yet. Check back soon!</p>
+    <p class="text-neutral-700 dark:text-neutral-300">No posts yet. Check back soon!</p>
   </div>
   {% endif %}
 </section>

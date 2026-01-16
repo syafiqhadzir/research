@@ -13,7 +13,7 @@ layout: description
         {{ post.title }}
       </h3>
       {% if post.excerpt %}
-      <p class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2">
+      <p class="text-sm text-neutral-800 dark:text-neutral-200 line-clamp-2">
         {{ post.excerpt | strip_html | truncate: 120 }}
       </p>
       {% endif %}
@@ -29,14 +29,14 @@ layout: description
         {{ post.title }}
       </h3>
       {% if post.excerpt %}
-      <p class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2">
+      <p class="text-sm text-neutral-800 dark:text-neutral-200 line-clamp-2">
         {{ post.excerpt | strip_html | truncate: 120 }}
       </p>
       {% endif %}
     </a>
   </li>
   {% endif %} {% endfor %} {% else %}
-  <li class="py-8 text-center text-neutral-500">No items to display.</li>
+  <li class="py-8 text-center text-neutral-700 dark:text-neutral-300">No items to display.</li>
   {% endif %}
 </ul>
 
@@ -60,7 +60,7 @@ layout: description
   <span></span>
   {% endif %}
 
-  <span class="text-sm text-neutral-500">
+  <span class="text-sm text-neutral-700 dark:text-neutral-300">
     Page {{ paginator.page }} of {{ paginator.total_pages }}
   </span>
 
