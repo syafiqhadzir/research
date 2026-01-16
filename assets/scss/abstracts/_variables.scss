@@ -28,6 +28,11 @@ $accent: #3b82f6;
 $accent-light: #60a5fa;
 $accent-dark: #2563eb;
 
+// Functional colors
+$green-500: #22c55e;
+$red-500: #ef4444;
+$amber-500: #f59e0b;
+
 // Color maps for programmatic access
 $colors: (
   'neutral': (
@@ -47,6 +52,15 @@ $colors: (
     'default': $accent,
     'light': $accent-light,
     'dark': $accent-dark,
+  ),
+  'green': (
+    500: $green-500,
+  ),
+  'red': (
+    500: $red-500,
+  ),
+  'amber': (
+    500: $amber-500,
   ),
 );
 
@@ -107,7 +121,9 @@ $spacing-3: 0.75rem; // 12px
 $spacing-4: 1rem; // 16px
 $spacing-5: 1.25rem; // 20px
 $spacing-6: 1.5rem; // 24px
+$spacing-7: 1.75rem; // 28px
 $spacing-8: 2rem; // 32px
+$spacing-9: 2.25rem; // 36px
 $spacing-10: 2.5rem; // 40px
 $spacing-12: 3rem; // 48px
 $spacing-16: 4rem; // 64px

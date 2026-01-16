@@ -93,9 +93,7 @@ layout: default
           {% endif %} {% if post.categories.size > 0 %}
           <div class="flex flex-wrap gap-2 mt-2">
             {% for category in post.categories limit:2 %}
-            <span
-              class="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
-            >
+            <span class="badge">
               {{ category }}
             </span>
             {% endfor %}
@@ -125,7 +123,7 @@ layout: default
   <div class="mt-10 pt-6 border-t border-neutral-200 dark:border-neutral-800">
     <a
       href="{{ '/publications/' | relative_url }}"
-      class="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-accent dark:hover:text-accent-light font-medium transition-colors duration-200 group"
+      class="btn btn-ghost group"
     >
       <span>View all articles</span>
       <svg

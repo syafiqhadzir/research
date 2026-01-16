@@ -67,7 +67,7 @@ layout: default
     <div class="flex flex-wrap gap-2 mb-6">
       <button
         data-category="all"
-        class="category-btn active px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900"
+        class="btn-filter is-active"
         aria-label="Show all articles"
       >
         All
@@ -75,7 +75,7 @@ layout: default
       {% for category in site.categories %}
       <button
         data-category="{{ category[0] | downcase | replace: ' ', '-' }}"
-        class="category-btn px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+        class="btn-filter"
         aria-label="Filter by {{ category[0] }}"
       >
         {{ category[0] }}
@@ -88,43 +88,50 @@ layout: default
 
   <!-- Posts List -->
   {% if site.posts.size > 0 %}
-  <ul class="space-y-2" id="posts-list">
-    {% for post in site.posts %}
-    <li
-      class="post-item group"
-      data-categories="{% for cat in post.categories %}{{ cat | downcase | replace: ' ', '-' }} {% endfor %}"
-    >
-      <a
-        href="{{ post.url | relative_url }}"
-        class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 py-3 px-4 -mx-4 rounded-xl transition-all duration-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
-      >
-        <!-- Date -->
-        <time
-          datetime="{{ post.date | date: '%Y-%m-%d' }}"
-          class="text-neutral-400 dark:text-neutral-500 font-mono text-xs sm:text-sm shrink-0 sm:min-w-22"
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse" id="posts-list">
+      <tbody>
+        {% for post in site.posts %}
+        <tr
+          class="post-item group transition-colors duration-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/50 cursor-pointer border-none"
+          data-categories="{% for cat in post.categories %}{{ cat | downcase | replace: ' ', '-' }} {% endfor %}"
+          onclick="window.location.href='{{ post.url | relative_url }}'"
         >
-          {{ post.date | date: "%b %d, %Y" }}
-        </time>
+          <!-- Date -->
+          <td class="py-3 px-4 w-32 align-middle whitespace-nowrap">
+            <time
+              datetime="{{ post.date | date: '%Y-%m-%d' }}"
+              class="text-neutral-400 dark:text-neutral-500 font-mono text-sm"
+            >
+              {{ post.date | date: "%b %d, %Y" }}
+            </time>
+          </td>
 
-        <!-- Title -->
-        <span
-          class="text-neutral-900 dark:text-neutral-100 font-medium group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-200 flex-1"
-        >
-          {{ post.title }}
-        </span>
+          <!-- Title -->
+          <td class="py-3 px-4 align-middle">
+            <a
+              href="{{ post.url | relative_url }}"
+              class="text-neutral-900 dark:text-neutral-100 font-medium group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-200 block"
+            >
+              {{ post.title }}
+            </a>
+          </td>
 
-        <!-- Categories -->
-        {% if post.categories.size > 0 %}
-        <span class="hidden lg:inline-flex items-center gap-1">
-          {% for category in post.categories limit:1 %}
-          <span class="text-xs text-neutral-400 dark:text-neutral-500">{{ category }}</span>
-          {% endfor %}
-        </span>
-        {% endif %}
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
+          <!-- Categories -->
+          <td class="py-3 px-4 text-right w-auto align-middle hidden sm:table-cell">
+            {% if post.categories.size > 0 %}
+            <div class="flex justify-end gap-1">
+              {% for category in post.categories limit:1 %}
+              <span class="badge">{{ category }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
   {% else %}
   <!-- Empty state -->
@@ -150,7 +157,7 @@ layout: default
 <!-- Category Filter Script -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const categoryBtns = document.querySelectorAll('.category-btn');
+    const categoryBtns = document.querySelectorAll('.btn-filter');
     const posts = document.querySelectorAll('.post-item');
 
     categoryBtns.forEach((btn) => {
@@ -158,34 +165,8 @@ layout: default
         const category = this.dataset.category;
 
         // Update active button
-        categoryBtns.forEach((b) => {
-          b.classList.remove(
-            'active',
-            'bg-neutral-900',
-            'dark:bg-white',
-            'text-white',
-            'dark:text-neutral-900'
-          );
-          b.classList.add(
-            'bg-neutral-100',
-            'dark:bg-neutral-800',
-            'text-neutral-600',
-            'dark:text-neutral-400'
-          );
-        });
-        this.classList.add(
-          'active',
-          'bg-neutral-900',
-          'dark:bg-white',
-          'text-white',
-          'dark:text-neutral-900'
-        );
-        this.classList.remove(
-          'bg-neutral-100',
-          'dark:bg-neutral-800',
-          'text-neutral-600',
-          'dark:text-neutral-400'
-        );
+        categoryBtns.forEach((b) => b.classList.remove('is-active'));
+        this.classList.add('is-active');
 
         // Filter posts
         posts.forEach((post) => {

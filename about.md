@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-## About Me
-
 I am a researcher and Software Quality Engineer at Cloud Connect, situated at the intersection of
 **Artificial Intelligence** and **Software Assurance**. My work investigates how cutting-edge AI
 methodologies can be synthesized with traditional testing frameworks to enhance the reliability and

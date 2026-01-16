@@ -1,0 +1,58 @@
+// ==========================================================================
+// COMPONENTS: BADGES
+// ==========================================================================
+// Small status indicators and tags
+// ==========================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-1 $spacing-3;
+
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: 1; // Tighter line height for alignment
+  border-radius: $border-radius-full;
+  border: 1px solid transparent; // Prepare for border
+
+  @include transition;
+
+  // Default (Neutral)
+  background-color: $neutral-50;
+  border-color: $neutral-200;
+  color: $neutral-600;
+
+  @include dark-mode {
+    background-color: alpha($neutral-800, 0.5);
+    border-color: $neutral-700;
+    color: $neutral-400;
+  }
+}
+
+// --------------------------------------------------------------------------
+// VARIANTS
+// --------------------------------------------------------------------------
+
+.badge-accent {
+  background-color: alpha($accent, 0.08);
+  border-color: alpha($accent, 0.2);
+  color: $accent;
+
+  @include dark-mode {
+    background-color: alpha($accent, 0.1);
+    border-color: alpha($accent, 0.2);
+    color: $accent-light;
+  }
+
+  // Hover state only if it's a link (or has .badge-interactive)
+  &[href]:hover,
+  &.badge-interactive:hover {
+    background-color: alpha($accent, 0.15);
+    border-color: alpha($accent, 0.3);
+  }
+}

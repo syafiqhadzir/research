@@ -22,13 +22,28 @@ $color-values: ();
 
 // Add accents
 @each $name, $value in map.get($colors, 'accent') {
-  $key: if($name == 'default', 'accent', 'accent-#{$name}');
+  $key: 'accent-#{$name}';
+  @if $name == 'default' {
+    $key: 'accent';
+  }
   $color-values: map.merge(
     $color-values,
     (
       $key: $value,
     )
   );
+}
+
+// Add functional colors
+@each $color-name in ('green', 'red', 'amber') {
+  @each $shade, $value in map.get($colors, $color-name) {
+    $color-values: map.merge(
+      $color-values,
+      (
+        '#{$color-name}-#{$shade}': $value,
+      )
+    );
+  }
 }
 
 // Add generic colors

@@ -9,7 +9,7 @@
     "postcss:build": "npx postcss ./assets/css/styles.css -r --no-map",
     "build:css": "npm run sass:build && npm run postcss:build",
     "watch:css": "npm run sass:watch",
-    "dev": "npm run sass:dev",
+    "dev": "npm run watch:css",
     "build": "npm run build:css",
     "lint:scss": "stylelint \"assets/scss/**/*.scss\"",
     "lint:js": "eslint \"assets/js/**/*.js\"",

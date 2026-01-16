@@ -97,3 +97,76 @@
     }
   }
 }
+
+// --------------------------------------------------------------------------
+// FILTER BUTTON (CHIP)
+// --------------------------------------------------------------------------
+.btn-filter {
+  @extend %btn-base;
+
+  padding: $spacing-1 $spacing-3;
+  font-size: $font-size-xs;
+  border-radius: $border-radius-full;
+  background-color: $neutral-100;
+  color: $neutral-600;
+
+  @include dark-mode {
+    background-color: $neutral-800;
+    color: $neutral-400;
+  }
+
+  &:hover {
+    background-color: $neutral-200;
+
+    @include dark-mode {
+      background-color: $neutral-700;
+    }
+  }
+
+  &.is-active {
+    background-color: $neutral-900;
+    color: #fff;
+    cursor: default;
+
+    @include dark-mode {
+      background-color: #fff;
+      color: $neutral-900;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// SIZES & MODIFIERS
+// --------------------------------------------------------------------------
+.btn-sm {
+  padding: $spacing-1 $spacing-3;
+  font-size: $font-size-xs;
+}
+
+.btn-pill {
+  border-radius: $border-radius-full;
+}
+
+// --------------------------------------------------------------------------
+// ICON BUTTON
+// --------------------------------------------------------------------------
+.btn-icon {
+  @extend %btn-base;
+
+  padding: 0;
+  width: $spacing-9;
+  height: $spacing-9;
+  border-radius: $border-radius-lg;
+  color: $neutral-400;
+  background-color: transparent;
+
+  &:hover {
+    color: $neutral-900;
+    background-color: $neutral-100;
+
+    @include dark-mode {
+      color: #fff;
+      background-color: $neutral-800;
+    }
+  }
+}
