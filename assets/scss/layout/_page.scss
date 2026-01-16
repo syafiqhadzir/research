@@ -47,14 +47,23 @@ body {
   &:focus {
     @include visually-visible;
 
-    position: absolute;
+    position: fixed; // Fixed for better visibility
     z-index: $z-index-tooltip;
     top: $spacing-4;
     left: $spacing-4;
-    padding: $spacing-2 $spacing-4;
-    background-color: $accent;
+    padding: $spacing-3 $spacing-6;
+    background-color: $accent-dark; // AAA contrast
     color: #fff;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-base;
     border-radius: $border-radius-base;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    // High contrast border for better visibility
+    outline: 3px solid #fff;
+    outline-offset: 2px;
   }
 }
 

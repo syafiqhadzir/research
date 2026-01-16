@@ -25,7 +25,8 @@
   @include transition;
 
   &:focus-visible {
-    @include focus-ring;
+    @include focus-ring($accent-dark, 3px);
+    z-index: 1; // Ensure focus ring is visible
   }
 
   &:disabled {

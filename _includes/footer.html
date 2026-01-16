@@ -1,9 +1,11 @@
 <!-- Footer - Dev Portfolio Blog Style with Futuristic Touch -->
 <footer
   class="max-w-content mx-auto w-full px-6 md:px-8 py-10 mt-20 border-t border-neutral-200 dark:border-neutral-800"
+  role="contentinfo"
+  aria-label="Site footer"
 >
   <!-- Social Links -->
-  <div class="flex items-center justify-center flex-wrap gap-4 sm:gap-6 mb-6">
+  <div class="flex items-center justify-center flex-wrap gap-4 sm:gap-6 mb-6" role="navigation" aria-label="Social media links">
     {% if site.github_username %}
     <a
       href="https://github.com/{{ site.github_username }}"

@@ -23,6 +23,32 @@ function toggleTheme() {
   // Save preference
   const isDark = html.classList.contains('dark');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+  // Update button title and announce to screen readers
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    const newTheme = isDark ? 'dark' : 'light';
+    themeToggle.setAttribute('title', `Toggle between light and dark mode (current: ${newTheme})`);
+    themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+
+    // Announce theme change to screen readers
+    announceToScreenReader(`${newTheme.charAt(0).toUpperCase() + newTheme.slice(1)} mode activated`);
+  }
+}
+
+// Announce changes to screen readers
+function announceToScreenReader(message) {
+  const announcement = document.createElement('div');
+  announcement.setAttribute('role', 'status');
+  announcement.setAttribute('aria-live', 'polite');
+  announcement.className = 'sr-only';
+  announcement.textContent = message;
+  document.body.appendChild(announcement);
+
+  // Remove after announcement
+  setTimeout(() => {
+    document.body.removeChild(announcement);
+  }, 1000);
 }
 
 // Make toggle function globally available

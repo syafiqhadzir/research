@@ -25,8 +25,12 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 
-  // Smooth scrolling
+  // Smooth scrolling (disabled if user prefers reduced motion)
   scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -125,6 +129,31 @@ button {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+// --------------------------------------------------------------------------
+// REDUCED MOTION (WCAG AAA Level)
+// --------------------------------------------------------------------------
+// Respect user's motion preferences for accessibility
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// --------------------------------------------------------------------------
+// HIGH CONTRAST MODE SUPPORT
+// --------------------------------------------------------------------------
+// Ensure content is visible in Windows High Contrast Mode
+@media (prefers-contrast: high) {
+  * {
+    outline-color: currentColor;
+  }
 }
 
 // --------------------------------------------------------------------------

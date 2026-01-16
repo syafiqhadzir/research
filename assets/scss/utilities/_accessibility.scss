@@ -1,0 +1,149 @@
+// ==========================================================================
+// UTILITIES: ACCESSIBILITY
+// ==========================================================================
+// Accessibility utility classes for WCAG AAA compliance
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// --------------------------------------------------------------------------
+// SCREEN READER ONLY
+// --------------------------------------------------------------------------
+// Visually hide content but keep it accessible to screen readers
+.sr-only,
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// Show on focus for keyboard users
+.sr-only-focusable:not(:focus):not(:focus-within),
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  @include visually-hidden;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:focus-within,
+.visually-hidden-focusable:focus,
+.visually-hidden-focusable:focus-within {
+  @include visually-visible;
+  position: fixed;
+  z-index: $z-index-tooltip;
+  padding: $spacing-3 $spacing-5;
+  background-color: $accent-dark;
+  color: #fff;
+  font-weight: $font-weight-semibold;
+  border-radius: $border-radius-base;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+// --------------------------------------------------------------------------
+// FOCUS VISIBLE UTILITIES
+// --------------------------------------------------------------------------
+// Force focus indicators for specific elements
+.focus-visible-always:focus {
+  @include focus-ring($accent-dark, 3px);
+}
+
+// Remove focus outline for mouse users only
+.focus-visible-keyboard:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+.focus-visible-keyboard:focus-visible {
+  @include focus-ring($accent-dark, 3px);
+}
+
+// --------------------------------------------------------------------------
+// HIGH CONTRAST MODE
+// --------------------------------------------------------------------------
+// Ensure visibility in high contrast mode
+@media (prefers-contrast: high) {
+  .high-contrast-border {
+    border: 2px solid currentColor !important;
+  }
+
+  .high-contrast-outline {
+    outline: 2px solid currentColor !important;
+    outline-offset: 2px !important;
+  }
+}
+
+// --------------------------------------------------------------------------
+// REDUCED MOTION
+// --------------------------------------------------------------------------
+// Disable animations for users who prefer reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe-only {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+// Only animate if motion is okay
+@media (prefers-reduced-motion: no-preference) {
+  .motion-safe {
+    // Animations allowed
+  }
+}
+
+// --------------------------------------------------------------------------
+// ARIA LIVE REGION
+// --------------------------------------------------------------------------
+// Styling for ARIA live regions
+[aria-live='polite'],
+[aria-live='assertive'],
+[role='status'],
+[role='alert'] {
+  // Ensure live regions are readable
+  &.sr-only {
+    @include visually-hidden;
+  }
+}
+
+// --------------------------------------------------------------------------
+// SKIP NAVIGATION LINKS
+// --------------------------------------------------------------------------
+// Style all skip links consistently
+.skip-navigation,
+.skip-link,
+[href^='#']:not([href='#']) {
+  &.sr-only-focusable {
+    @include visually-hidden;
+
+    &:focus {
+      @include visually-visible;
+      position: fixed;
+      top: $spacing-4;
+      left: $spacing-4;
+      z-index: $z-index-tooltip;
+      padding: $spacing-3 $spacing-6;
+      background-color: $accent-dark;
+      color: #fff;
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-base;
+      border-radius: $border-radius-base;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// LANDMARK LABELS
+// --------------------------------------------------------------------------
+// Ensure landmarks are properly identified
+[role='navigation'],
+[role='main'],
+[role='complementary'],
+[role='contentinfo'],
+[role='banner'] {
+  // These should have aria-label or aria-labelledby
+  &:not([aria-label]):not([aria-labelledby]) {
+    // Development warning (can be removed in production)
+    // outline: 2px dashed red;
+  }
+}

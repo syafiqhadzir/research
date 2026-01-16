@@ -102,7 +102,15 @@ a {
   @include transition(color);
 
   &:focus-visible {
-    @include focus-ring;
+    @include focus-ring($accent-dark);
+    border-radius: 2px; // Slight rounding for better appearance
+  }
+
+  // Ensure links are distinguishable (WCAG AAA)
+  &:not([class]) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
   }
 }
 

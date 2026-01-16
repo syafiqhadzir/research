@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
 
     <!-- Performance: Resource Hints -->
     {% include resource-hints.html %}
@@ -40,11 +41,11 @@
   </head>
 
   <body class="min-h-screen flex flex-col">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Skip to main content (Press Enter)</a>
 
     {% include themeSelector.html %}
 
-    <main id="main-content" class="main-content">
+    <main id="main-content" class="main-content" role="main" aria-label="Main content">
       {{ content }}
     </main>
 
