@@ -1,0 +1,121 @@
+// ==========================================================================
+// UTILITIES: SPACING
+// ==========================================================================
+// Padding and Margin utilities
+
+@use 'sass:map';
+@use '../abstracts/variables' as *;
+@use 'generator' as *;
+
+// Spacing values including 'auto' and 'px'
+$spacing-values: (
+  '0': 0,
+  'px': 1px,
+  '1': $spacing-1,
+  // 4px
+  '2': $spacing-2,
+  // 8px
+  '3': $spacing-3,
+  // 12px
+  '4': $spacing-4,
+  // 16px
+  '5': $spacing-5,
+  // 20px
+  '6': $spacing-6,
+  // 24px
+  '8': $spacing-8,
+  // 32px
+  '10': $spacing-10,
+  // 40px
+  '12': $spacing-12,
+  // 48px
+  '16': $spacing-16,
+  // 64px
+  '20': $spacing-20,
+  // 80px
+  '24': $spacing-24, // 96px
+);
+$spacing-utilities: (
+  // Margin
+  'margin': (
+      property: margin,
+      class: m,
+      values: map.merge(
+          $spacing-values,
+          (
+            'auto': auto,
+          )
+        ),
+      responsive: true,
+    ),
+  'margin-x': (
+    property: margin-inline,
+    // Modern Logical Property replacement for left/right
+    class: mx,
+    values: map.merge(
+        $spacing-values,
+        (
+          'auto': auto,
+        )
+      ),
+    responsive: true,
+  ),
+  'margin-y': (
+    property: margin-block,
+    // Modern Logical Property replacement for top/bottom
+    class: my,
+    values: map.merge(
+        $spacing-values,
+        (
+          'auto': auto,
+        )
+      ),
+    responsive: true,
+  ),
+  'margin-top': (
+    property: margin-top,
+    class: mt,
+    values: $spacing-values,
+    responsive: true,
+  ),
+  'margin-bottom': (
+    property: margin-bottom,
+    class: mb,
+    values: $spacing-values,
+    responsive: true,
+  ),
+
+  // Padding
+  'padding': (
+      property: padding,
+      class: p,
+      values: $spacing-values,
+      responsive: true,
+    ),
+  'padding-x': (
+    property: padding-inline,
+    class: px,
+    values: $spacing-values,
+    responsive: true,
+  ),
+  'padding-y': (
+    property: padding-block,
+    class: py,
+    values: $spacing-values,
+    responsive: true,
+  ),
+  'padding-top': (
+    property: padding-top,
+    class: pt,
+    values: $spacing-values,
+    responsive: true,
+  ),
+  'padding-bottom': (
+    property: padding-bottom,
+    class: pb,
+    values: $spacing-values,
+    responsive: true,
+  )
+);
+
+@include generate-utilities($spacing-utilities);

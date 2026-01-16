@@ -1,40 +1,151 @@
 ---
-layout: description
-permalink: /categories/
-title: Research Areas
+layout: default
 ---
 
-<div id="archives">
-  {% for category in site.categories %}
-  <section class="category-section" style="margin-bottom: 4rem">
-    {% capture category_name %}{{ category | first }}{% endcapture %}
-    <h2
-      id="{{ category_name | slugify }}"
-      class="category-title"
-      style="
-        font-size: 1.25rem;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 0.5rem;
-        margin-bottom: 1.5rem;
-      "
+<!-- Header with Navigation -->
+<header class="mb-12 md:mb-16">
+  <h1 class="text-xl md:text-2xl font-bold tracking-tighter mb-6">
+    <a
+      href="{{ '/' | relative_url }}"
+      class="text-neutral-900 dark:text-neutral-100 hover:text-accent dark:hover:text-accent-light transition-colors duration-200"
     >
-      {{ category_name }}
-    </h2>
-    <ul class="publication-list minimal">
-      {% for post in site.categories[category_name] %}
-      <li class="publication-item">
-        <span class="publication__meta">{{ post.date | date: "%Y" }}</span>
-        <div class="publication__content">
-          <h3 class="publication__title">
-            <a href="{{ post.url | relative_url }}" class="publication__link"
-              >{{ post.title }}</a
-            >
-          </h3>
-          <div class="publication__venue"><em>{{ post.venue }}</em></div>
-        </div>
+      {{ site.author_name }}
+    </a>
+  </h1>
+
+  <!-- Navigation -->
+  <nav aria-label="Main navigation">
+    <ul class="flex flex-wrap gap-4 md:gap-6 text-sm">
+      <li>
+        <a href="{{ '/' | relative_url }}" class="nav-link py-1">Home</a>
       </li>
-      {% endfor %}
+      <li>
+        <a href="{{ '/about/' | relative_url }}" class="nav-link py-1">About</a>
+      </li>
+      <li>
+        <a href="{{ '/publications/' | relative_url }}" class="nav-link nav-link--active py-1"
+          >Articles</a
+        >
+      </li>
+      {% if site.portfolio_url %}
+      <li>
+        <a href="{{ site.portfolio_url }}" class="nav-link py-1" target="_blank" rel="noopener"
+          >Portfolio</a
+        >
+      </li>
+      {% endif %} {% if site.blog_url %}
+      <li>
+        <a href="{{ site.blog_url }}" class="nav-link py-1" target="_blank" rel="noopener">Blog</a>
+      </li>
+      {% endif %} {% if site.resume_url %}
+      <li>
+        <a
+          href="{{ site.resume_url | relative_url }}"
+          class="nav-link py-1"
+          target="_blank"
+          rel="noopener"
+          >Resume</a
+        >
+      </li>
+      {% endif %}
     </ul>
-  </section>
-  {% endfor %}
-</div>
+  </nav>
+</header>
+
+<!-- Categories Section -->
+<section>
+  <h2
+    class="text-2xl md:text-3xl font-bold tracking-tighter mb-10 text-neutral-900 dark:text-neutral-100"
+  >
+    {{ page.title | default: "Categories" }}
+  </h2>
+
+  {% assign sorted_categories = site.categories | sort %} {% if sorted_categories.size > 0 %}
+  <div class="space-y-12">
+    {% for category in sorted_categories %}
+    <div id="{{ category[0] | slugify }}" class="scroll-mt-24">
+      <!-- Category Header -->
+      <div
+        class="flex items-center justify-between mb-6 pb-3 border-b border-neutral-200 dark:border-neutral-800"
+      >
+        <h3
+          class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-3"
+        >
+          <span
+            class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-accent/10 text-accent text-sm font-mono"
+          >
+            {{ category[1].size }}
+          </span>
+          {{ category[0] }}
+        </h3>
+      </div>
+
+      <!-- Posts in Category -->
+      <ul class="space-y-1">
+        {% for post in category[1] %}
+        <li class="group">
+          <a
+            href="{{ post.url | relative_url }}"
+            class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 py-3 px-4 -mx-4 rounded-xl transition-all duration-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
+          >
+            <time
+              datetime="{{ post.date | date: '%Y-%m-%d' }}"
+              class="text-neutral-400 dark:text-neutral-500 font-mono text-xs sm:text-sm shrink-0 sm:min-w-22"
+            >
+              {{ post.date | date: "%b %d, %Y" }}
+            </time>
+            <span
+              class="text-neutral-900 dark:text-neutral-100 font-medium group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-200"
+            >
+              {{ post.title }}
+            </span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <!-- Empty state -->
+  <div class="text-center py-16">
+    <div
+      class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-neutral-100 dark:bg-neutral-900 mb-6"
+    >
+      <svg class="w-10 h-10 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+        />
+      </svg>
+    </div>
+    <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+      No categories yet
+    </h3>
+    <p class="text-neutral-500 dark:text-neutral-500">
+      Posts will be organized by category as they are published.
+    </p>
+  </div>
+  {% endif %}
+
+  <!-- Back to blog -->
+  <div class="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+    <a
+      href="{{ '/publications/' | relative_url }}"
+      class="inline-flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-500 hover:text-accent dark:hover:text-accent-light transition-colors duration-200"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 16l-4-4m0 0l4-4m-4 4h18"
+        />
+      </svg>
+      <span>Back to all articles</span>
+    </a>
+  </div>
+</section>

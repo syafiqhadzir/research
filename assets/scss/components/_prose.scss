@@ -1,0 +1,163 @@
+// ==========================================================================
+// COMPONENTS: PROSE
+// ==========================================================================
+// Prose styling for markdown content
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// --------------------------------------------------------------------------
+// PROSE CONTENT
+// --------------------------------------------------------------------------
+.prose-content {
+  // Headings
+  h2:not(:first-child) {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-tight;
+    margin-top: $spacing-12;
+    margin-bottom: $spacing-4;
+    color: $neutral-900;
+
+    @include dark-mode {
+      color: $neutral-50;
+    }
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-tight;
+    margin-top: $spacing-8;
+    margin-bottom: $spacing-3;
+    color: $neutral-900;
+
+    @include dark-mode {
+      color: $neutral-50;
+    }
+  }
+
+  h4 {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    margin-top: $spacing-6;
+    margin-bottom: $spacing-2;
+    color: $neutral-900;
+
+    @include dark-mode {
+      color: $neutral-50;
+    }
+  }
+
+  // Paragraphs
+  p {
+    margin-bottom: $spacing-4;
+    color: $neutral-700;
+
+    @include dark-mode {
+      color: $neutral-300;
+    }
+  }
+
+  // Lists
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: $spacing-4;
+    color: $neutral-700;
+
+    @include dark-mode {
+      color: $neutral-300;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+    margin-bottom: $spacing-4;
+    color: $neutral-700;
+
+    @include dark-mode {
+      color: $neutral-300;
+    }
+  }
+
+  li {
+    padding-left: $spacing-1;
+    margin-bottom: $spacing-2;
+  }
+
+  // Links
+  a {
+    color: $accent;
+    text-decoration: none;
+
+    @include dark-mode {
+      color: $accent-light;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
+  // Strong text
+  strong {
+    font-weight: $font-weight-semibold;
+    color: $neutral-900;
+
+    @include dark-mode {
+      color: $neutral-50;
+    }
+  }
+
+  // Images
+  img {
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    margin: $spacing-6 0;
+    width: 100%;
+  }
+
+  // Figures
+  figure {
+    margin: $spacing-8 0;
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $neutral-500;
+    margin-top: $spacing-2;
+  }
+
+  // Tables
+  table {
+    width: 100%;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-6;
+  }
+
+  th {
+    text-align: left;
+    font-weight: $font-weight-semibold;
+    color: $neutral-900;
+    padding: $spacing-2 $spacing-3;
+    border-bottom: $border-width-default solid $neutral-200;
+
+    @include dark-mode {
+      color: $neutral-50;
+      border-bottom-color: $neutral-800;
+    }
+  }
+
+  td {
+    padding: $spacing-2 $spacing-3;
+    border-bottom: $border-width-default solid $neutral-100;
+
+    @include dark-mode {
+      border-bottom-color: $neutral-800;
+    }
+  }
+}

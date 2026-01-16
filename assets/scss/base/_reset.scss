@@ -1,0 +1,143 @@
+// ==========================================================================
+// BASE: RESET
+// ==========================================================================
+// Modern CSS reset based on best practices
+// Removes browser inconsistencies while preserving useful defaults
+
+// --------------------------------------------------------------------------
+// BOX SIZING
+// --------------------------------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// --------------------------------------------------------------------------
+// DOCUMENT
+// --------------------------------------------------------------------------
+html {
+  // Prevent font size inflation on mobile
+  // -moz- and -webkit- are needed for specific browser quirks here
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -moz-text-size-adjust: none;
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+
+  // Smooth scrolling
+  scroll-behavior: smooth;
+}
+
+// --------------------------------------------------------------------------
+// BODY
+// --------------------------------------------------------------------------
+body {
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.5;
+}
+
+// --------------------------------------------------------------------------
+// TYPOGRAPHY
+// --------------------------------------------------------------------------
+// Remove default margins
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+// Reduce heading line-height
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+// --------------------------------------------------------------------------
+// LISTS
+// --------------------------------------------------------------------------
+// Remove default list styles globally
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// --------------------------------------------------------------------------
+// LINKS
+// --------------------------------------------------------------------------
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+// --------------------------------------------------------------------------
+// MEDIA
+// --------------------------------------------------------------------------
+// Make images easier to work with
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// --------------------------------------------------------------------------
+// FORMS
+// --------------------------------------------------------------------------
+// Inherit fonts for inputs and buttons
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Remove default button styles
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+// --------------------------------------------------------------------------
+// TABLES
+// --------------------------------------------------------------------------
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// --------------------------------------------------------------------------
+// ACCESSIBILITY
+// --------------------------------------------------------------------------
+// Remove all animations and transitions for users who prefer reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

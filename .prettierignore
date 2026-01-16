@@ -1,0 +1,12 @@
+# Jekyll build artifacts
+_site/
+.jekyll-cache/
+.sass-cache/
+.jekyll-metadata/
+vendor/
+node_modules/
+
+# Files with heavy Liquid logic that break Prettier's HTML parser
+_layouts/
+_includes/
+*.html

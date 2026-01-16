@@ -1,0 +1,188 @@
+// ==========================================================================
+// BASE: TYPOGRAPHY
+// ==========================================================================
+// Global typography styles and font loading
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
+// --------------------------------------------------------------------------
+// FONT SMOOTHING
+// --------------------------------------------------------------------------
+html {
+  @include font-smoothing;
+}
+
+// --------------------------------------------------------------------------
+// BODY TYPOGRAPHY
+// --------------------------------------------------------------------------
+body {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+
+  // Light mode colors
+  color: $neutral-900;
+
+  @include dark-mode {
+    color: $neutral-100;
+  }
+}
+
+// --------------------------------------------------------------------------
+// HEADINGS
+// --------------------------------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-bold;
+  letter-spacing: $letter-spacing-tight;
+  color: $neutral-900;
+
+  @include dark-mode {
+    color: $neutral-100;
+  }
+}
+
+h1 {
+  font-size: $font-size-3xl;
+
+  @include respond-to('md') {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-2xl;
+
+  @include respond-to('md') {
+    font-size: $font-size-3xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-xl;
+
+  @include respond-to('md') {
+    font-size: $font-size-2xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-lg;
+}
+
+h5,
+h6 {
+  font-size: $font-size-base;
+}
+
+// --------------------------------------------------------------------------
+// PARAGRAPHS
+// --------------------------------------------------------------------------
+p {
+  margin-bottom: $spacing-4;
+  color: $neutral-700;
+
+  @include dark-mode {
+    color: $neutral-300;
+  }
+}
+
+// --------------------------------------------------------------------------
+// LINKS
+// --------------------------------------------------------------------------
+a {
+  @include transition(color);
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// --------------------------------------------------------------------------
+// CODE
+// --------------------------------------------------------------------------
+code,
+kbd,
+samp,
+pre {
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+}
+
+code {
+  padding: $spacing-1 $spacing-2;
+  border-radius: $border-radius-sm;
+  background-color: $neutral-100;
+  color: $neutral-800;
+
+  @include dark-mode {
+    background-color: $neutral-800;
+    color: $neutral-200;
+  }
+}
+
+pre {
+  padding: $spacing-4;
+  border-radius: $border-radius-lg;
+  background-color: $neutral-950;
+  color: $neutral-100;
+  overflow-x: auto;
+  border: $border-width-default solid $neutral-800;
+
+  @include dark-mode {
+    background-color: $neutral-900;
+  }
+
+  code {
+    padding: 0;
+    background-color: transparent;
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// --------------------------------------------------------------------------
+// BLOCKQUOTES
+// --------------------------------------------------------------------------
+blockquote {
+  margin: $spacing-6 0;
+  padding-left: $spacing-4;
+  border-left: 4px solid $accent;
+  font-style: italic;
+  color: $neutral-600;
+
+  @include dark-mode {
+    color: $neutral-400;
+  }
+}
+
+// --------------------------------------------------------------------------
+// TEXT SELECTION
+// --------------------------------------------------------------------------
+::selection {
+  background-color: alpha($accent, 0.3);
+}
+
+.dark ::selection {
+  color: #fff;
+}
+
+// --------------------------------------------------------------------------
+// HORIZONTAL RULE
+// --------------------------------------------------------------------------
+hr {
+  margin: $spacing-10 0;
+  border: none;
+  border-top: $border-width-default solid $neutral-200;
+
+  @include dark-mode {
+    border-color: $neutral-800;
+  }
+}

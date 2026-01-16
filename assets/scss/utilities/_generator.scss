@@ -1,0 +1,77 @@
+// ==========================================================================
+// UTILITIES: GENERATOR
+// ==========================================================================
+// Powerful mixin to generate utility classes from maps
+// Based on the APIs of popular utility-first frameworks but built with Sass
+
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
+/// Generate utilities from a config map
+/// @param {Map} $utilities - The configuration map for utilities
+@mixin generate-utilities($utilities) {
+  @each $key, $utility in $utilities {
+    // Get configuration values
+    $class: map.get($utility, class) or $key;
+    $property: map.get($utility, property) or $key;
+    $values: map.get($utility, values);
+    $responsive: map.get($utility, responsive) or false;
+    $state: map.get($utility, state) or ();
+
+    // Generate base classes
+    @each $modifier, $value in $values {
+      $class-name: $class;
+
+      @if $modifier != 'DEFAULT' {
+        @if $class == '' or not $class {
+          $class-name: $modifier;
+        } @else {
+          $class-name: '#{$class}-#{$modifier}';
+        }
+      }
+
+      .#{$class-name} {
+        #{$property}: $value !important;
+      }
+
+      // Generate states (hover, focus, etc)
+      @if list.index($state, hover) {
+        .#{$class-name}:hover {
+          #{$property}: $value !important;
+        }
+        .group:hover .group-hover\:#{$class-name} {
+          #{$property}: $value !important;
+        }
+      }
+    }
+
+    // Generate responsive variants using our breakpoints
+    @if $responsive {
+      @each $bp-name, $bp-value in $breakpoints {
+        @include respond-to($bp-name) {
+          @each $modifier, $value in $values {
+            $class-name: $class;
+
+            @if $modifier != 'DEFAULT' {
+              @if $class == '' or not $class {
+                $class-name: $modifier;
+              } @else {
+                $class-name: '#{$class}-#{$modifier}';
+              }
+            }
+
+            // Escaped breakpoint prefix: md:class-name
+            $escaped-bp: escape-css($bp-name);
+            .#{$escaped-bp}\:#{$class-name} {
+              #{$property}: $value !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+// ==========================================================================
+// LAYOUT: PAGE
+// ==========================================================================
+// Main page layout structure
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
+// --------------------------------------------------------------------------
+// BODY LAYOUT
+// --------------------------------------------------------------------------
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fff;
+
+  @include dark-mode {
+    background-color: $neutral-950;
+  }
+}
+
+// --------------------------------------------------------------------------
+// MAIN CONTENT
+// --------------------------------------------------------------------------
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: $max-width-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $spacing-16 $spacing-6;
+
+  @include respond-to('md') {
+    padding: $spacing-24 $spacing-8;
+  }
+}
+
+// --------------------------------------------------------------------------
+// SKIP LINK
+// --------------------------------------------------------------------------
+.skip-link {
+  @include visually-hidden;
+
+  &:focus {
+    @include visually-visible;
+
+    position: absolute;
+    z-index: $z-index-tooltip;
+    top: $spacing-4;
+    left: $spacing-4;
+    padding: $spacing-2 $spacing-4;
+    background-color: $accent;
+    color: #fff;
+    border-radius: $border-radius-base;
+  }
+}
+
+// --------------------------------------------------------------------------
+// SCROLLBAR
+// --------------------------------------------------------------------------
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $neutral-100;
+
+  .dark & {
+    background-color: $neutral-900;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $neutral-300;
+  border-radius: $border-radius-full;
+
+  .dark & {
+    background-color: $neutral-700;
+  }
+
+  &:hover {
+    background-color: $neutral-400;
+
+    .dark & {
+      background-color: $neutral-600;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// UTILITY: GLOW
+// --------------------------------------------------------------------------
+.glow {
+  filter: drop-shadow(0 0 10px alpha($accent, 0.3));
+}
+
+// --------------------------------------------------------------------------
+// UTILITY: FADE MASK
+// --------------------------------------------------------------------------
+.fade-mask {
+  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+}

@@ -1,7 +1,7 @@
 ---
 layout: publications
 permalink: /publications/
-title: Publications
+title: Articles
 pagination:
   enabled: true
 ---

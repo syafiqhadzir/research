@@ -2,7 +2,11 @@
   "ci": {
     "collect": {
       "numberOfRuns": 3,
-      "url": ["http://localhost:4000/", "http://localhost:4000/about/", "http://localhost:4000/publications/"]
+      "url": [
+        "http://localhost:4000/",
+        "http://localhost:4000/about/",
+        "http://localhost:4000/publications/"
+      ]
     },
     "assert": {
       "preset": "lighthouse:recommended",

@@ -1,24 +1,32 @@
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <ul class="nav__list">
-    <li class="nav__item">
-      <a href="{{ 'about/' | relative_url }}" class="nav__link">About</a>
+<nav class="flex flex-wrap gap-6 md:gap-5 text-sm" role="navigation" aria-label="Main navigation">
+  <ul class="flex flex-wrap gap-6 md:gap-5">
+    <li>
+      <a
+        href="{{ '/about/' | relative_url }}"
+        class="nav-link relative text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-blue-400 font-medium transition-colors duration-200 py-2"
+        >About</a
+      >
     </li>
-    <li class="nav__item">
-      <a href="{{ 'publications/' | relative_url }}" class="nav__link"
+    <li>
+      <a
+        href="{{ '/publications/' | relative_url }}"
+        class="nav-link relative text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-blue-400 font-medium transition-colors duration-200 py-2"
         >Publications</a
       >
     </li>
-    <li class="nav__item">
-      <a href="{{ 'categories/' | relative_url }}" class="nav__link"
+    <li>
+      <a
+        href="{{ '/categories/' | relative_url }}"
+        class="nav-link relative text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-blue-400 font-medium transition-colors duration-200 py-2"
         >Research Areas</a
       >
     </li>
-    <li class="nav__item">
+    <li>
       <a
         href="https://syafiqhadzir.dev/"
-        class="nav__link"
         target="_blank"
         rel="noopener"
+        class="nav-link relative text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-blue-400 font-medium transition-colors duration-200 py-2"
         >Portfolio</a
       >
     </li>

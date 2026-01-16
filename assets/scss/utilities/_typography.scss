@@ -1,0 +1,89 @@
+// ==========================================================================
+// UTILITIES: TYPOGRAPHY
+// ==========================================================================
+// Text styling and alignment
+
+@use 'sass:map';
+@use '../abstracts/variables' as *;
+@use 'generator' as *;
+
+$typography-utilities: (
+  // Font Size
+  'font-size': (
+      property: font-size,
+      class: text,
+      values: (
+        'xs': $font-size-xs,
+        'sm': $font-size-sm,
+        'base': $font-size-base,
+        'lg': $font-size-lg,
+        'xl': $font-size-xl,
+        '2xl': $font-size-2xl,
+        '3xl': $font-size-3xl,
+        '4xl': $font-size-4xl,
+      ),
+      responsive: true,
+    ),
+
+  // Font Weight
+  'font-weight': (
+      property: font-weight,
+      class: font,
+      values: (
+        'light': $font-weight-light,
+        'normal': $font-weight-normal,
+        'medium': $font-weight-medium,
+        'semibold': $font-weight-semibold,
+        'bold': $font-weight-bold,
+      ),
+    ),
+
+  // Text Align
+  'text-align': (
+      property: text-align,
+      class: text,
+      values: (
+        'left': left,
+        'center': center,
+        'right': right,
+        'justify': justify,
+      ),
+      responsive: true,
+    ),
+
+  // Text Transform
+  'text-transform': (
+      property: text-transform,
+      class: '',
+      values: (
+        'uppercase': uppercase,
+        'lowercase': lowercase,
+        'capitalize': capitalize,
+      ),
+    ),
+
+  // Letter Spacing
+  'letter-spacing': (
+      property: letter-spacing,
+      class: tracking,
+      values: (
+        'tighter': $letter-spacing-tighter,
+        'tight': $letter-spacing-tight,
+        'normal': $letter-spacing-normal,
+        'wide': $letter-spacing-wide,
+        'widest': $letter-spacing-widest,
+      ),
+    ),
+
+  // Font Family
+  'font-family': (
+      property: font-family,
+      class: font,
+      values: (
+        'sans': $font-family-sans,
+        'mono': $font-family-mono,
+      ),
+    )
+);
+
+@include generate-utilities($typography-utilities);

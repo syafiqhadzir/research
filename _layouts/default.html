@@ -1,46 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Resource Hints for Performance -->
+    <!-- Performance: Resource Hints -->
     {% include resource-hints.html %}
     
-    <link rel="shortcut icon" href="{{"/favicon.ico" | relative_url }}"
-    type="image/x-icon" />
+    <link rel="shortcut icon" href="{{"/favicon.ico" | relative_url }}" type="image/x-icon" />
+    
     <title>
-      {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{
-      site.title }}{% endif %}
+      {% if page.title %}{{ page.title }} | {{ site.author_name }}{% else %}{{ site.author_name }}{% endif %}
     </title>
     
-    <!-- Critical CSS - Inline for instant rendering -->
-    {% include critical-css.html %}
+    <!-- Sass - Compiled for Production -->
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
     
-    <!-- Async load full CSS with preload -->
-    <link rel="preload" href="{{"/assets/css/styles.css" | relative_url}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{"/assets/css/styles.css" | relative_url}}"></noscript>
+    <!-- Google Fonts: Inter & JetBrains Mono for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="manifest" href="{{"/manifest.json" | relative_url}}">
+    
+    <!-- Theme initialization (prevents flash) -->
     <script>
-      // Register Service Worker for offline support and caching
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    
+    {% include analytics.html %}
+    {% feed_meta %}
+    {% seo %}
+  </head>
+  
+  <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    {% include themeSelector.html %}
+    
+    <main id="main-content" class="main-content">
+      {{ content }}
+    </main>
+    
+    {% include footer.html %}
+    
+    <!-- Service Worker Registration -->
+    <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").catch(() => {
-            // Silent fail - Service Worker is a progressive enhancement
-          });
+          navigator.serviceWorker.register("/sw.js").catch(() => {});
         });
       }
     </script>
-    {% include analytics.html %} {% feed_meta %} {% seo %}
-  </head>
-  <body onload="onLoad()">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    {% include themeSelector.html %}
-    <main id="main-content" class="site-main">{{ content }}</main>
-    {% include footer.html %}
+    
     <script src="{{"/assets/js/theme.js" | relative_url}}" defer></script>
-    <script src="{{"/assets/js/script.js" | relative_url}}" defer></script>
     <script src="{{"/assets/js/web-vitals.js" | relative_url}}" defer></script>
   </body>
 </html>

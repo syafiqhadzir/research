@@ -1,0 +1,56 @@
+// ==========================================================================
+// UTILITIES: EFFECT
+// ==========================================================================
+// Opacity, Shadows, etc.
+
+@use 'sass:map';
+@use '../abstracts/variables' as *;
+@use 'generator' as *;
+
+$effect-utilities: (
+  // Opacity
+  'opacity': (
+      property: opacity,
+      class: opacity,
+      values: (
+        '0': 0,
+        '25': 0.25,
+        '50': 0.5,
+        '60': 0.6,
+        '75': 0.75,
+        '100': 1,
+      ),
+      state: (
+        hover,
+      ),
+    ),
+
+  // Shadows
+  'box-shadow': (
+      property: box-shadow,
+      class: shadow,
+      values: (
+        'sm': $shadow-sm,
+        'DEFAULT': $shadow-md,
+        'lg': $shadow-lg,
+        'xl': $shadow-xl,
+        'none': none,
+      ),
+      state: (
+        hover,
+      ),
+    ),
+
+  // Cursor
+  'cursor': (
+      property: cursor,
+      class: cursor,
+      values: (
+        'pointer': pointer,
+        'default': default,
+        'not-allowed': not-allowed,
+      ),
+    )
+);
+
+@include generate-utilities($effect-utilities);

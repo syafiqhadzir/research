@@ -1,11 +1,19 @@
 author_name: "Syafiq Hadzir"
-url: research.syafiqhadzir.dev
+url: "https://research.syafiqhadzir.dev"
 description: "Professional portfolio of an AI-assisted Software QA Engineer specializing in test automation and AI-driven methodologies."
 
-# Scholarly Profiles
+# Resume/CV (leave empty to hide from navigation)
+resume_url: ""
+
+# External Links
+portfolio_url: "https://syafiqhadzir.dev/"
+blog_url: "https://blog.syafiqhadzir.dev/"
+
+# Scholarly & Social Profiles
 google_scholar: ""
 orcid: ""
 github_username: "syafiqhadzir"
+linkedin: ""
 
 # Performance Optimization
 incremental: true
@@ -33,10 +41,6 @@ liquid:
   strict_filters: true
   strict_variables: false
 
-# Sass optimization
-sass:
-  style: compressed
-  sourcemap: never
 
 # Plugins
 plugins:
@@ -46,7 +50,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate-v2
   - jekyll-minifier
-  - autoprefixer-rails
 
 ############################################################
 # Pagination

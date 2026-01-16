@@ -1,0 +1,99 @@
+// ==========================================================================
+// COMPONENTS: BUTTONS
+// ==========================================================================
+// Button component variants
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// --------------------------------------------------------------------------
+// BASE BUTTON
+// --------------------------------------------------------------------------
+%btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  padding: $spacing-2 $spacing-4;
+  border-radius: $border-radius-base;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  cursor: pointer;
+
+  @include transition;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// --------------------------------------------------------------------------
+// PRIMARY BUTTON
+// --------------------------------------------------------------------------
+.btn-primary {
+  @extend %btn-base;
+
+  background-color: $accent;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background-color: $accent-dark;
+    box-shadow: $shadow-lg;
+  }
+}
+
+// --------------------------------------------------------------------------
+// GHOST BUTTON
+// --------------------------------------------------------------------------
+.btn-ghost {
+  @extend %btn-base;
+
+  background-color: transparent;
+  color: $neutral-600;
+
+  @include dark-mode {
+    color: $neutral-400;
+  }
+
+  &:hover:not(:disabled) {
+    color: $neutral-900;
+    background-color: $neutral-100;
+
+    @include dark-mode {
+      color: #fff;
+      background-color: $neutral-800;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// OUTLINE BUTTON
+// --------------------------------------------------------------------------
+.btn-outline {
+  @extend %btn-base;
+
+  background-color: transparent;
+  color: $neutral-700;
+  border: $border-width-default solid $neutral-200;
+
+  @include dark-mode {
+    color: $neutral-300;
+    border-color: $neutral-700;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $accent;
+    color: $accent;
+
+    @include dark-mode {
+      border-color: $accent-light;
+      color: $accent-light;
+    }
+  }
+}

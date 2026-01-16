@@ -1,0 +1,96 @@
+// ==========================================================================
+// ABSTRACTS: FUNCTIONS
+// ==========================================================================
+// Helper functions for calculations and value retrieval
+
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:color';
+@use 'sass:string';
+@use 'variables' as *;
+
+// --------------------------------------------------------------------------
+// STRING FUNCTIONS
+// --------------------------------------------------------------------------
+
+/// Escape a string for use in a CSS class name
+/// Handles starting digits and special characters
+/// @param {String} $string - The identifier to escape
+/// @return {String} The escaped identifier
+@function escape-css($string) {
+  $string: string.unquote('#{$string}');
+  $first: string.slice($string, 1, 1);
+
+  // If starts with a digit, escape it
+  @if string.index('0123456789', $first) {
+    @return '\\3' + $first + ' ' + string.slice($string, 2);
+  }
+
+  @return $string;
+}
+
+// --------------------------------------------------------------------------
+// COLOR FUNCTIONS
+// --------------------------------------------------------------------------
+
+/// Get a color from the colors map
+/// @param {String} $palette - Color palette name (e.g., 'neutral', 'accent')
+/// @param {String|Number} $shade - Shade name or number
+/// @return {Color} The requested color
+/// @example scss
+///   color: get-color('neutral', 500);
+@function get-color($palette, $shade) {
+  @if map.has-key($colors, $palette) {
+    $palette-map: map.get($colors, $palette);
+
+    @if map.has-key($palette-map, $shade) {
+      @return map.get($palette-map, $shade);
+    }
+
+    @warn "Shade '#{$shade}' not found in '#{$palette}' palette.";
+    @return null;
+  }
+
+  @warn "Palette '#{$palette}' not found in $colors map.";
+  @return null;
+}
+
+/// Create a semi-transparent version of a color
+/// @param {Color} $color - Base color
+/// @param {Number} $opacity - Opacity value (0-1)
+/// @return {Color} The color with adjusted opacity
+@function alpha($clr, $opacity) {
+  @return color.change($clr, $alpha: $opacity);
+}
+
+// --------------------------------------------------------------------------
+// SPACING FUNCTIONS
+// --------------------------------------------------------------------------
+
+/// Convert pixels to rem
+/// @param {Number} $px - Pixel value
+/// @param {Number} $base - Base font size (default: 16px)
+/// @return {Number} Rem value
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+/// Convert pixels to em
+/// @param {Number} $px - Pixel value
+/// @param {Number} $base - Base font size (default: 16px)
+/// @return {Number} Em value
+@function em($px, $base: 16) {
+  @return math.div($px, $base) * 1em;
+}
+
+// --------------------------------------------------------------------------
+// MATH FUNCTIONS
+// --------------------------------------------------------------------------
+
+/// Calculate percentage from two values
+/// @param {Number} $partial - The partial value
+/// @param {Number} $total - The total value
+/// @return {Number} Percentage value
+@function percentage-of($partial, $total) {
+  @return math.percentage(math.div($partial, $total));
+}

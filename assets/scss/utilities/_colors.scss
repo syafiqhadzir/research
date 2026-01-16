@@ -1,0 +1,77 @@
+// ==========================================================================
+// UTILITIES: COLORS
+// ==========================================================================
+// Text and Background colors
+
+@use 'sass:map';
+@use '../abstracts/variables' as *;
+@use 'generator' as *;
+
+// Flatten color map for utilities
+$color-values: ();
+
+// Add neutrals
+@each $shade, $value in map.get($colors, 'neutral') {
+  $color-values: map.merge(
+    $color-values,
+    (
+      'neutral-#{$shade}': $value,
+    )
+  );
+}
+
+// Add accents
+@each $name, $value in map.get($colors, 'accent') {
+  $key: if($name == 'default', 'accent', 'accent-#{$name}');
+  $color-values: map.merge(
+    $color-values,
+    (
+      $key: $value,
+    )
+  );
+}
+
+// Add generic colors
+$color-values: map.merge(
+  $color-values,
+  (
+    'white': #fff,
+    'black': #000,
+    'transparent': transparent,
+  )
+);
+$color-utilities: (
+  // Text Color
+  'text-color': (
+      property: color,
+      class: text,
+      values: $color-values,
+      responsive: true,
+      state: (
+        hover,
+      ),
+    ),
+
+  // Background Color
+  'background-color': (
+      property: background-color,
+      class: bg,
+      values: $color-values,
+      responsive: true,
+      state: (
+        hover,
+      ),
+    ),
+
+  // Border Color
+  'border-color': (
+      property: border-color,
+      class: border,
+      values: $color-values,
+      state: (
+        hover,
+      ),
+    )
+);
+
+@include generate-utilities($color-utilities);

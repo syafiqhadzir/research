@@ -31,7 +31,7 @@ self.addEventListener('install', (event) => {
     caches
       .open(CACHE_NAME)
       .then((cache) => cache.addAll(PRECACHE_ASSETS))
-      .then(() => self.skipWaiting()),
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -47,10 +47,10 @@ self.addEventListener('activate', (event) => {
         Promise.all(
           cacheNames
             .filter((cacheName) => cacheName !== CACHE_NAME && cacheName !== RUNTIME_CACHE)
-            .map((cacheName) => caches.delete(cacheName)),
-        ),
+            .map((cacheName) => caches.delete(cacheName))
+        )
       )
-      .then(() => self.clients.claim()),
+      .then(() => self.clients.claim())
   );
 });
 

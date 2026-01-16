@@ -1,0 +1,184 @@
+// ==========================================================================
+// UTILITIES: LAYOUT
+// ==========================================================================
+// Flexbox, Grid, Display, Positioning
+
+@use 'sass:map';
+@use '../abstracts/variables' as *;
+@use 'generator' as *;
+
+$layout-utilities: (
+  // Display
+  'display': (
+      property: display,
+      class: '',
+      // No prefix for basics, but we need to handle specifics manually or safely
+      values: (
+          'block': block,
+          'inline': inline,
+          'inline-block': inline-block,
+          'flex': flex,
+          'inline-flex': inline-flex,
+          'grid': grid,
+          'hidden': none,
+        ),
+      responsive: true,
+    ),
+
+  // Flex Direction
+  'flex-direction': (
+      property: flex-direction,
+      class: flex,
+      values: (
+        'row': row,
+        'row-reverse': row-reverse,
+        'col': column,
+        'col-reverse': column-reverse,
+      ),
+      responsive: true,
+    ),
+
+  // Flex Wrap
+  'flex-wrap': (
+      property: flex-wrap,
+      class: flex,
+      values: (
+        'wrap': wrap,
+        'nowrap': nowrap,
+      ),
+      responsive: true,
+    ),
+
+  // Align Items
+  'align-items': (
+      property: align-items,
+      class: items,
+      values: (
+        'start': flex-start,
+        'end': flex-end,
+        'center': center,
+        'baseline': baseline,
+        'stretch': stretch,
+      ),
+      responsive: true,
+    ),
+
+  // Justify Content
+  'justify-content': (
+      property: justify-content,
+      class: justify,
+      values: (
+        'start': flex-start,
+        'end': flex-end,
+        'center': center,
+        'between': space-between,
+        'around': space-around,
+        'evenly': space-evenly,
+      ),
+      responsive: true,
+    ),
+
+  // Gap
+  'gap': (
+      property: gap,
+      class: gap,
+      values: (
+        '0': 0,
+        '1': $spacing-1,
+        '2': $spacing-2,
+        '3': $spacing-3,
+        '4': $spacing-4,
+        '5': $spacing-5,
+        '6': $spacing-6,
+        '8': $spacing-8,
+        '10': $spacing-10,
+        '12': $spacing-12,
+        '16': $spacing-16,
+      ),
+      responsive: true,
+    ),
+
+  // Positioning
+  'position': (
+      property: position,
+      class: '',
+      values: (
+        'static': static,
+        'fixed': fixed,
+        'absolute': absolute,
+        'relative': relative,
+        'sticky': sticky,
+      ),
+      responsive: true,
+    ),
+
+  // Width
+  'width': (
+      property: width,
+      class: w,
+      values: (
+        'full': 100%,
+        'screen': 100vw,
+        'auto': auto,
+        '4': $spacing-4,
+        '8': $spacing-8,
+        '10': $spacing-10,
+        '20': $spacing-20,
+      ),
+      responsive: true,
+    ),
+
+  // Max Width
+  'max-width': (
+      property: max-width,
+      class: max-w,
+      values: (
+        'full': 100%,
+        'content': $max-width-content,
+        'lg': 32rem,
+        // 512px
+      ),
+      responsive: true,
+    ),
+
+  // Height
+  'height': (
+      property: height,
+      class: h,
+      values: (
+        'full': 100%,
+        'screen': 100vh,
+        'auto': auto,
+        '4': $spacing-4,
+        '8': $spacing-8,
+        '10': $spacing-10,
+        '20': $spacing-20,
+      ),
+      responsive: true,
+    ),
+
+  // Min Height
+  'min-height': (
+      property: min-height,
+      class: min-h,
+      values: (
+        'screen': 100vh,
+        '0': 0,
+      ),
+      responsive: true,
+    ),
+
+  // Flex grow/shrink
+  'flex': (
+      property: flex,
+      class: flex,
+      values: (
+        '1': '1 1 0%',
+        'auto': '1 1 auto',
+        'none': 'none',
+      ),
+      responsive: true,
+    )
+);
+
+@include generate-utilities($layout-utilities);
